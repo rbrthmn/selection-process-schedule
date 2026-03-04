@@ -1,4 +1,7 @@
-export type Dependency = {
-    event: number;
-    previousEvent: number;
-};
+export class Dependency {
+    constructor(
+        event: number,
+        previousEvent: number,
+    ) {
+    }
+}
