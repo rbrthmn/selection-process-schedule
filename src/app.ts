@@ -1,6 +1,7 @@
+import 'reflect-metadata';
 import {envs} from './core/config/env';
-import {AppRoutes} from './routes';
 import {Server} from './server';
+import {container} from './inversify.config';
 
 (() => {
     main();
@@ -8,9 +9,9 @@ import {Server} from './server';
 
 function main(): void {
     const server = new Server({
-        routes: AppRoutes.routes,
-        apiPrefix: envs.API_PREFIX,
         port: envs.PORT,
+        container: container,
+        apiPrefix: envs.API_PREFIX,
     });
     void server.start();
 }

@@ -1,10 +1,13 @@
+import {injectable, inject} from 'inversify';
 import {ScheduleRepository} from '../domain/repositories/schedule.repository';
 import {ScheduleDatasource} from '../domain/datasources/schedule.datasource';
 import {EventEntity} from '../domain/entities/event.entity';
 import {DependencyEntity} from '../domain/entities/dependency.entity';
+import {TYPES} from "../../../core/types";
 
+@injectable()
 export class ScheduleRepositoryImpl implements ScheduleRepository {
-    constructor(private readonly datasource: ScheduleDatasource) {
+    constructor(@inject(TYPES.ScheduleDatasource) private readonly datasource: ScheduleDatasource) {
     }
 
     createEvent(event: EventEntity): EventEntity {
