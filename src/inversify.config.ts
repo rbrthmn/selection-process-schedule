@@ -4,10 +4,10 @@ import {ScheduleDatasource} from './features/schedule/domain/datasources/schedul
 import {LocalScheduleDatasourceImpl} from './features/schedule/infrastructure/local.datasource.impl';
 import {ScheduleRepository} from './features/schedule/domain/repositories/schedule.repository';
 import {ScheduleRepositoryImpl} from './features/schedule/infrastructure/repository.impl';
-import {CreateEvent, CreateEventUseCase} from './features/schedule/domain/usecases/CreateEvent';
-import {GetEvents, GetEventsUseCase} from './features/schedule/domain/usecases/GetEvents';
-import {CreateDependency, CreateDependencyUseCase} from './features/schedule/domain/usecases/CreateDependency';
-import {GetDependencies, GetDependenciesUseCase} from './features/schedule/domain/usecases/GetDependencies';
+import {CreateEvent, CreateEventUseCase} from './features/schedule/domain/usecases/create-event';
+import {GetEvents, GetEventsUseCase} from './features/schedule/domain/usecases/get-events';
+import {CreateDependency, CreateDependencyUseCase} from './features/schedule/domain/usecases/create-dependency';
+import {GetDependencies, GetDependenciesUseCase} from './features/schedule/domain/usecases/get-dependencies';
 import './features/schedule/presentation/controller'; // Import controller to register it
 
 const container = new Container();

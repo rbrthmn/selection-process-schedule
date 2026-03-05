@@ -5,10 +5,10 @@ import {DependencyEntity} from '../domain/entities/dependency.entity';
 import {controller, httpPost, httpGet} from 'inversify-express-utils';
 import {inject} from 'inversify';
 import {TYPES} from "../../../core/types";
-import {CreateEventUseCase} from "../domain/usecases/CreateEvent";
-import {GetEventsUseCase} from "../domain/usecases/GetEvents";
-import {CreateDependencyUseCase} from "../domain/usecases/CreateDependency";
-import {GetDependenciesUseCase} from "../domain/usecases/GetDependencies";
+import {CreateEventUseCase} from "../domain/usecases/create-event";
+import {GetEventsUseCase} from "../domain/usecases/get-events";
+import {CreateDependencyUseCase} from "../domain/usecases/create-dependency";
+import {GetDependenciesUseCase} from "../domain/usecases/get-dependencies";
 import {AppError} from "../../../core/errors/custom.error";
 
 const createEventSchema = z.object({
