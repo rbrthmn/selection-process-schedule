@@ -1,6 +1,6 @@
 import {Response, NextFunction, Request} from 'express';
 import {HttpCode} from '../constants';
-import {AppError} from '../errors/custom.error';
+import {AppError} from "../errors/custom.error";
 
 export class ErrorMiddleware {
     public static handleError = (error: unknown, _: Request, res: Response, next: NextFunction): void => {

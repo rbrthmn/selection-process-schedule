@@ -5,8 +5,8 @@ import express, {Request, Response, NextFunction} from 'express';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
 import {HttpCode, ONE_HUNDRED, ONE_THOUSAND, SIXTY} from './core/constants';
-import {AppError} from './core/errors/custom.error';
 import {ErrorMiddleware} from './core/middlewares/error.middleware';
+import {AppError} from "./core/errors/custom.error";
 
 interface ServerOptions {
     port: number;
