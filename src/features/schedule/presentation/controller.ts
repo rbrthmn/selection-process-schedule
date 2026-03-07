@@ -10,7 +10,6 @@ import {GetDependenciesUseCase} from "../domain/usecases/get-dependencies";
 import {AppError} from "../../../core/errors/custom-error";
 import {isHttpError} from "http-errors";
 import {Event} from "../domain/entities/event";
-import {Dependency} from "../domain/entities/dependency";
 
 const createEventSchema = z.object({
     name: z.string().min(1, 'Event name is required'),

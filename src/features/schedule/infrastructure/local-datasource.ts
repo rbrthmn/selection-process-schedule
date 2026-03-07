@@ -1,5 +1,5 @@
 import {injectable} from 'inversify';
-import {ScheduleDatasource} from '../domain/datasources/schedule-datasource';
+import {ScheduleDatasourceContract} from '../domain/datasources/schedule-datasource-contract';
 import {Event} from "../domain/entities/event";
 import {Dependency} from "../domain/entities/dependency";
 
@@ -7,7 +7,7 @@ const EVENTS_MOCK: Event[] = [];
 const DEPENDENCIES_MOCK: Dependency[] = [];
 
 @injectable()
-export class LocalScheduleDatasourceImpl implements ScheduleDatasource {
+export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
     createEvent(event: Event): Event {
         const newEvent = new Event(
             (EVENTS_MOCK.length + 1).toString(),

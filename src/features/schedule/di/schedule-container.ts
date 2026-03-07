@@ -7,12 +7,12 @@ import {GetEvents, GetEventsUseCase} from "../domain/usecases/get-events";
 import {CreateDependency, CreateDependencyUseCase} from "../domain/usecases/create-dependency";
 import {GetDependencies, GetDependenciesUseCase} from "../domain/usecases/get-dependencies";
 import "../presentation/controller";
-import {ScheduleDatasource} from "../domain/datasources/schedule-datasource";
+import {ScheduleDatasource, ScheduleDatasourceContract} from "../domain/datasources/schedule-datasource-contract";
 import {ScheduleRepository} from "../domain/repositories/schedule-repository";
 
 export const scheduleModule = new ContainerModule((bind) => {
   // Data Sources
-  bind<ScheduleDatasource>(TYPES.ScheduleDatasource).to(LocalScheduleDatasourceImpl).inSingletonScope();
+  bind<ScheduleDatasourceContract>(ScheduleDatasource).to(LocalScheduleDatasourceImpl).inSingletonScope();
 
   // Repositories
   bind<ScheduleRepository>(TYPES.ScheduleRepository).to(ScheduleRepositoryImpl).inSingletonScope();

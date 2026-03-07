@@ -1,5 +1,4 @@
 export const TYPES = {
-    ScheduleDatasource: Symbol.for('ScheduleDatasource'),
     ScheduleRepository: Symbol.for('ScheduleRepository'),
     CreateEventUseCase: Symbol.for('CreateEventUseCase'),
     GetEventsUseCase: Symbol.for('GetEventsUseCase'),
