@@ -9,8 +9,8 @@ import {CreateDependencyUseCase} from "../domain/usecases/create-dependency";
 import {GetDependenciesUseCase} from "../domain/usecases/get-dependencies";
 import {AppError} from "../../../core/errors/custom-error";
 import {isHttpError} from "http-errors";
-import {EventEntity} from "../domain/entities/event-entity";
-import {DependencyEntity} from "../domain/entities/dependency-entity";
+import {Event} from "../domain/entities/event";
+import {Dependency} from "../domain/entities/dependency";
 
 const createEventSchema = z.object({
     name: z.string().min(1, 'Event name is required'),
@@ -36,7 +36,7 @@ export class ScheduleController {
     public async createEvent(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const validatedData = createEventSchema.parse(req.body);
-            const newEvent = this.createEventUseCase.execute(new EventEntity(validatedData.name, validatedData.duration));
+            const newEvent = this.createEventUseCase.execute(new Event(validatedData.name, validatedData.duration));
             res.status(201).json(newEvent);
         } catch (error: any) {
             this.handleError(error, next)
@@ -57,7 +57,7 @@ export class ScheduleController {
     public async createDependency(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const validatedData = createDependencySchema.parse(req.body);
-            const newDependency = this.createDependencyUseCase.execute(new DependencyEntity(validatedData.source, validatedData.target));
+            const newDependency = this.createDependencyUseCase.execute(new Dependency(validatedData.source, validatedData.target));
             res.status(201).json(newDependency);
         } catch (error: any) {
             this.handleError(error, next);

@@ -1,13 +1,13 @@
 import {AppError} from "../../../../core/errors/custom-error";
 
-export class DependencyEntity {
+export class Dependency {
     constructor(
         public source: string,
         public target: string
     ) {
     }
 
-    public static fromJson(obj: Record<string, unknown>): DependencyEntity {
+    public static fromJson(obj: Record<string, unknown>): Dependency {
         const {source, target} = obj;
         if (!source) {
             throw AppError.badRequest('This entity requires a source', [{
@@ -21,6 +21,6 @@ export class DependencyEntity {
                 fields: ['target']
             }]);
         }
-        return new DependencyEntity(source as string, target as string);
+        return new Dependency(source as string, target as string);
     }
 }

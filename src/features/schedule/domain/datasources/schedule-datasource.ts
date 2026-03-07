@@ -1,14 +1,14 @@
-import {EventEntity} from "../entities/event-entity";
-import {DependencyEntity} from "../entities/dependency-entity";
+import {Event} from "../entities/event";
+import {Dependency} from "../entities/dependency";
 
 export abstract class ScheduleDatasource {
-    abstract createEvent(event: EventEntity): EventEntity;
+    abstract createEvent(event: Event): Event;
 
-    abstract getEvents(): EventEntity[];
+    abstract getEvents(): Event[];
 
-    abstract createDependency(dependency: DependencyEntity): DependencyEntity;
+    abstract createDependency(dependency: Dependency): Dependency;
 
-    abstract getDependencies(): DependencyEntity[];
+    abstract getDependencies(): Dependency[];
 
     // Add other abstract methods for schedule-related operations as needed
 }

@@ -1,28 +1,28 @@
 import {injectable} from 'inversify';
 import {ScheduleDatasource} from '../domain/datasources/schedule-datasource';
-import {EventEntity} from "../domain/entities/event-entity";
-import {DependencyEntity} from "../domain/entities/dependency-entity";
+import {Event} from "../domain/entities/event";
+import {Dependency} from "../domain/entities/dependency";
 
-const EVENTS_MOCK: EventEntity[] = [];
-const DEPENDENCIES_MOCK: DependencyEntity[] = [];
+const EVENTS_MOCK: Event[] = [];
+const DEPENDENCIES_MOCK: Dependency[] = [];
 
 @injectable()
 export class LocalScheduleDatasourceImpl implements ScheduleDatasource {
-    createEvent(event: EventEntity): EventEntity {
+    createEvent(event: Event): Event {
         EVENTS_MOCK.push(event);
         return event;
     }
 
-    getEvents(): EventEntity[] {
+    getEvents(): Event[] {
         return EVENTS_MOCK;
     }
 
-    createDependency(dependency: DependencyEntity): DependencyEntity {
+    createDependency(dependency: Dependency): Dependency {
         DEPENDENCIES_MOCK.push(dependency);
         return dependency;
     }
 
-    getDependencies(): DependencyEntity[] {
+    getDependencies(): Dependency[] {
         return DEPENDENCIES_MOCK;
     }
 }

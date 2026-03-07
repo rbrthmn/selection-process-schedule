@@ -1,13 +1,13 @@
 import {AppError} from "../../../../core/errors/custom-error";
 
-export class EventEntity {
+export class Event {
     constructor(
         public name: string,
         public duration: number
     ) {
     }
 
-    public static fromJson(obj: Record<string, unknown>): EventEntity {
+    public static fromJson(obj: Record<string, unknown>): Event {
         const {name, duration} = obj;
         if (!name) {
             throw AppError.badRequest('This entity requires a name', [{
@@ -21,6 +21,6 @@ export class EventEntity {
                 fields: ['duration']
             }]);
         }
-        return new EventEntity(name as string, duration as number);
+        return new Event(name as string, duration as number);
     }
 }

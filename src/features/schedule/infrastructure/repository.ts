@@ -2,27 +2,27 @@ import {injectable, inject} from 'inversify';
 import {ScheduleRepository} from '../domain/repositories/schedule-repository';
 import {ScheduleDatasource} from '../domain/datasources/schedule-datasource';
 import {TYPES} from "../../../core/types";
-import {EventEntity} from "../domain/entities/event-entity";
-import {DependencyEntity} from "../domain/entities/dependency-entity";
+import {Event} from "../domain/entities/event";
+import {Dependency} from "../domain/entities/dependency";
 
 @injectable()
 export class ScheduleRepositoryImpl implements ScheduleRepository {
     constructor(@inject(TYPES.ScheduleDatasource) private readonly datasource: ScheduleDatasource) {
     }
 
-    createEvent(event: EventEntity): EventEntity {
+    createEvent(event: Event): Event {
         return this.datasource.createEvent(event);
     }
 
-    getEvents(): EventEntity[] {
+    getEvents(): Event[] {
         return this.datasource.getEvents();
     }
 
-    createDependency(dependency: DependencyEntity): DependencyEntity {
+    createDependency(dependency: Dependency): Dependency {
         return this.datasource.createDependency(dependency);
     }
 
-    getDependencies(): DependencyEntity[] {
+    getDependencies(): Dependency[] {
         return this.datasource.getDependencies();
     }
 }
