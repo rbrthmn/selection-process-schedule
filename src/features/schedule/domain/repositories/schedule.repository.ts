@@ -1,5 +1,5 @@
-import {EventEntity} from '../entities/event.entity';
-import {DependencyEntity} from '../entities/dependency.entity';
+import {EventEntity} from "../entities/event-entity";
+import {DependencyEntity} from "../entities/dependency-entity";
 
 export abstract class ScheduleRepository {
     abstract createEvent(event: EventEntity): EventEntity;

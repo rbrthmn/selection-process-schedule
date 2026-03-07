@@ -1,9 +1,9 @@
 import {injectable, inject} from 'inversify';
 import {ScheduleRepository} from '../domain/repositories/schedule.repository';
 import {ScheduleDatasource} from '../domain/datasources/schedule.datasource';
-import {EventEntity} from '../domain/entities/event.entity';
-import {DependencyEntity} from '../domain/entities/dependency.entity';
 import {TYPES} from "../../../core/types";
+import {EventEntity} from "../domain/entities/event-entity";
+import {DependencyEntity} from "../domain/entities/dependency-entity";
 
 @injectable()
 export class ScheduleRepositoryImpl implements ScheduleRepository {

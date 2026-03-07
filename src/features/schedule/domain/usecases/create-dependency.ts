@@ -1,7 +1,7 @@
 import {injectable, inject} from 'inversify';
-import {DependencyEntity} from '../entities/dependency.entity';
 import {ScheduleRepository} from '../repositories/schedule.repository';
 import {TYPES} from '../../../../core/types';
+import {DependencyEntity} from "../entities/dependency-entity";
 
 export interface CreateDependencyUseCase {
     execute(dependency: DependencyEntity): DependencyEntity;

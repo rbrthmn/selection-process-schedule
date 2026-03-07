@@ -1,7 +1,7 @@
 import {injectable, inject} from 'inversify';
-import {EventEntity} from '../entities/event.entity';
 import {ScheduleRepository} from '../repositories/schedule.repository';
 import {TYPES} from '../../../../core/types';
+import {EventEntity} from "../entities/event-entity";
 
 export interface GetEventsUseCase {
     execute(): EventEntity[];

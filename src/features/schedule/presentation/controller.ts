@@ -1,7 +1,5 @@
 import e, {Request, Response, NextFunction} from 'express';
 import {z} from 'zod';
-import {EventEntity} from '../domain/entities/event.entity';
-import {DependencyEntity} from '../domain/entities/dependency.entity';
 import {controller, httpPost, httpGet} from 'inversify-express-utils';
 import {inject} from 'inversify';
 import {TYPES} from "../../../core/types";
@@ -11,6 +9,8 @@ import {CreateDependencyUseCase} from "../domain/usecases/create-dependency";
 import {GetDependenciesUseCase} from "../domain/usecases/get-dependencies";
 import {AppError} from "../../../core/errors/custom.error";
 import {isHttpError} from "http-errors";
+import {EventEntity} from "../domain/entities/event-entity";
+import {DependencyEntity} from "../domain/entities/dependency-entity";
 
 const createEventSchema = z.object({
     name: z.string().min(1, 'Event name is required'),
@@ -70,7 +70,7 @@ export class ScheduleController {
                 fields: [err.path.join('.')],
                 constraint: err.message
             }))));
-        } else if (error instanceof AppError) {
+        } else if (isHttpError(error)) {
             next(error);
         } else {
             next(AppError.internalServer('An unexpected error occurred'));
