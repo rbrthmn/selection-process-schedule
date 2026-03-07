@@ -9,8 +9,17 @@ const DEPENDENCIES_MOCK: Dependency[] = [];
 @injectable()
 export class LocalScheduleDatasourceImpl implements ScheduleDatasource {
     createEvent(event: Event): Event {
-        EVENTS_MOCK.push(event);
-        return event;
+        const newEvent = new Event(
+            (EVENTS_MOCK.length + 1).toString(),
+            event.name,
+            event.type,
+            event.initialDate,
+            event.endDate,
+            [],
+            event.durationDays
+        );
+        EVENTS_MOCK.push(newEvent);
+        return newEvent;
     }
 
     getEvents(): Event[] {
@@ -18,8 +27,16 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasource {
     }
 
     createDependency(dependency: Dependency): Dependency {
-        DEPENDENCIES_MOCK.push(dependency);
-        return dependency;
+        const newEvent = new Event(
+            (EVENTS_MOCK.length + 1).toString(),
+            '',
+            '',
+            '',
+            '',
+            [],
+           0
+        );
+        return new Dependency("", newEvent, newEvent, 0);
     }
 
     getDependencies(): Dependency[] {

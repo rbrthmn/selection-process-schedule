@@ -26,3 +26,5 @@ export class ScheduleRepositoryImpl implements ScheduleRepository {
         return this.datasource.getDependencies();
     }
 }
+
+export type ScheduleRepositoryType = ScheduleRepository;

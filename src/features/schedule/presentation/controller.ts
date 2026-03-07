@@ -14,12 +14,16 @@ import {Dependency} from "../domain/entities/dependency";
 
 const createEventSchema = z.object({
     name: z.string().min(1, 'Event name is required'),
-    duration: z.number().int().positive('Duration must be a positive integer'),
+    type: z.string().min(1, 'Event type is required'),
+    initialDate: z.string().datetime(),
+    endDate: z.string().datetime(),
+    durationDays: z.number().int().positive(),
 });
 
 const createDependencySchema = z.object({
-    source: z.string().min(1, 'Source event name is required'),
-    target: z.string().min(1, 'Target event name is required'),
+    eventId: z.string().min(1, 'Event ID is required'),
+    previousEventId: z.string().min(1, 'Previous event ID is required'),
+    dislocationDays: z.number().int(),
 });
 
 @controller('/schedule')
@@ -36,7 +40,15 @@ export class ScheduleController {
     public async createEvent(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const validatedData = createEventSchema.parse(req.body);
-            const newEvent = this.createEventUseCase.execute(new Event(validatedData.name, validatedData.duration));
+            const newEvent = this.createEventUseCase.execute(new Event(
+                '',
+                validatedData.name,
+                validatedData.type,
+                validatedData.initialDate,
+                validatedData.endDate,
+                [],
+                validatedData.durationDays
+            ));
             res.status(201).json(newEvent);
         } catch (error: any) {
             this.handleError(error, next)
@@ -53,17 +65,6 @@ export class ScheduleController {
         }
     }
 
-    @httpPost('/dependencies')
-    public async createDependency(req: Request, res: Response, next: NextFunction): Promise<void> {
-        try {
-            const validatedData = createDependencySchema.parse(req.body);
-            const newDependency = this.createDependencyUseCase.execute(new Dependency(validatedData.source, validatedData.target));
-            res.status(201).json(newDependency);
-        } catch (error: any) {
-            this.handleError(error, next);
-        }
-    };
-
     private handleError(error: any, next: e.NextFunction) {
         if (error instanceof z.ZodError) {
             next(AppError.badRequest('Validation Error', error.errors.map(err => ({
@@ -73,16 +74,6 @@ export class ScheduleController {
         } else if (isHttpError(error)) {
             next(error);
         } else {
-            next(AppError.internalServer('An unexpected error occurred'));
-        }
-    }
-
-    @httpGet('/dependencies')
-    public async getDependencies(_req: Request, res: Response, next: NextFunction): Promise<void> {
-        try {
-            const dependencies = this.getDependenciesUseCase.execute();
-            res.status(200).json(dependencies);
-        } catch (error: any) {
             next(AppError.internalServer('An unexpected error occurred'));
         }
     }
