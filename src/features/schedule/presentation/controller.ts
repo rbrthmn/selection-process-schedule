@@ -7,7 +7,7 @@ import {CreateEventUseCase} from "../domain/usecases/create-event";
 import {GetEventsUseCase} from "../domain/usecases/get-events";
 import {CreateDependencyUseCase} from "../domain/usecases/create-dependency";
 import {GetDependenciesUseCase} from "../domain/usecases/get-dependencies";
-import {AppError} from "../../../core/errors/custom.error";
+import {AppError} from "../../../core/errors/custom-error";
 import {isHttpError} from "http-errors";
 import {EventEntity} from "../domain/entities/event-entity";
 import {DependencyEntity} from "../domain/entities/dependency-entity";

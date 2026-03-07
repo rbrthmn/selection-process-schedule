@@ -1,5 +1,5 @@
 import { Container } from 'inversify';
-import { scheduleModule } from '../features/schedule/di/schedule.container';
+import { scheduleModule } from '../features/schedule/di/schedule-container';
 
 const container = new Container();
 

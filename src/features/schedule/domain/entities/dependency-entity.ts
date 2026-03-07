@@ -1,4 +1,4 @@
-import {AppError} from "../../../../core/errors/custom.error";
+import {AppError} from "../../../../core/errors/custom-error";
 
 export class DependencyEntity {
     constructor(

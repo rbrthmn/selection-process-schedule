@@ -1,6 +1,6 @@
 import {injectable, inject} from 'inversify';
-import {ScheduleRepository} from '../domain/repositories/schedule.repository';
-import {ScheduleDatasource} from '../domain/datasources/schedule.datasource';
+import {ScheduleRepository} from '../domain/repositories/schedule-repository';
+import {ScheduleDatasource} from '../domain/datasources/schedule-datasource';
 import {TYPES} from "../../../core/types";
 import {EventEntity} from "../domain/entities/event-entity";
 import {DependencyEntity} from "../domain/entities/dependency-entity";

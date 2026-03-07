@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import {envs} from './core/config/env';
 import {Server} from './server';
-import {container} from './di/inversify.config';
+import {container} from './di/inversify-config';
 
 (() => {
     main();

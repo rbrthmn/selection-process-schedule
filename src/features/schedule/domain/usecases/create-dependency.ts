@@ -1,5 +1,5 @@
 import {injectable, inject} from 'inversify';
-import {ScheduleRepository} from '../repositories/schedule.repository';
+import {ScheduleRepository} from '../repositories/schedule-repository';
 import {TYPES} from '../../../../core/types';
 import {DependencyEntity} from "../entities/dependency-entity";
 

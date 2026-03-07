@@ -1,5 +1,5 @@
 import {injectable} from 'inversify';
-import {ScheduleDatasource} from '../domain/datasources/schedule.datasource';
+import {ScheduleDatasource} from '../domain/datasources/schedule-datasource';
 import {EventEntity} from "../domain/entities/event-entity";
 import {DependencyEntity} from "../domain/entities/dependency-entity";
 
