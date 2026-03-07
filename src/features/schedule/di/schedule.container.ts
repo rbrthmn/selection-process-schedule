@@ -8,6 +8,7 @@ import {CreateEvent, CreateEventUseCase} from "../domain/usecases/create-event";
 import {GetEvents, GetEventsUseCase} from "../domain/usecases/get-events";
 import {CreateDependency, CreateDependencyUseCase} from "../domain/usecases/create-dependency";
 import {GetDependencies, GetDependenciesUseCase} from "../domain/usecases/get-dependencies";
+import "../presentation/controller";
 
 export const scheduleModule = new ContainerModule((bind) => {
   // Data Sources
