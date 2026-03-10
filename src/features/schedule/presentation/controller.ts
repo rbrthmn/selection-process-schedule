@@ -4,7 +4,7 @@ import {controller, httpPost, httpGet} from 'inversify-express-utils';
 import {inject} from 'inversify';
 import {TYPES} from "../../../core/types";
 import {CreateEventUseCase, CreateEventUseCaseContract} from "../domain/usecases/create-event";
-import {GetEventsUseCase} from "../domain/usecases/get-events";
+import {GetEventsUseCase, GetEventsUseCaseContract} from "../domain/usecases/get-events";
 import {CreateDependencyUseCase} from "../domain/usecases/create-dependency";
 import {GetDependenciesUseCase} from "../domain/usecases/get-dependencies";
 import {AppError} from "../../../core/errors/custom-error";
@@ -35,7 +35,7 @@ interface ScheduleControllerContract {
 export class ScheduleController implements ScheduleControllerContract {
     constructor(
         @inject(CreateEventUseCase) private readonly createEventUseCase: CreateEventUseCaseContract,
-        @inject(TYPES.GetEventsUseCase) private readonly getEventsUseCase: GetEventsUseCase,
+        @inject(GetEventsUseCase) private readonly getEventsUseCase: GetEventsUseCaseContract,
     ) {
     }
 
