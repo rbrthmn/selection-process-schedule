@@ -8,14 +8,17 @@ import {CreateDependency, CreateDependencyUseCase} from "../domain/usecases/crea
 import {GetDependencies, GetDependenciesUseCase} from "../domain/usecases/get-dependencies";
 import "../presentation/controller";
 import {ScheduleDatasource, ScheduleDatasourceContract} from "../domain/datasources/schedule-datasource-contract";
-import {ScheduleRepository} from "../domain/repositories/schedule-repository";
+import {
+  ScheduleRepository,
+  ScheduleRepositoryContract,
+} from "../domain/repositories/schedule-repository-contract";
 
 export const scheduleModule = new ContainerModule((bind) => {
   // Data Sources
   bind<ScheduleDatasourceContract>(ScheduleDatasource).to(LocalScheduleDatasourceImpl).inSingletonScope();
 
   // Repositories
-  bind<ScheduleRepository>(TYPES.ScheduleRepository).to(ScheduleRepositoryImpl).inSingletonScope();
+  bind<ScheduleRepositoryContract>(ScheduleRepository).to(ScheduleRepositoryImpl).inSingletonScope();
 
   // Use Cases
   bind<CreateEventUseCase>(TYPES.CreateEventUseCase).to(CreateEvent);

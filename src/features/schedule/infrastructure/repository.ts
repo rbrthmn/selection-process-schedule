@@ -1,12 +1,11 @@
 import {injectable, inject} from 'inversify';
-import {ScheduleRepository} from '../domain/repositories/schedule-repository';
+import {ScheduleRepositoryContract} from '../domain/repositories/schedule-repository-contract';
 import {ScheduleDatasource, ScheduleDatasourceContract} from '../domain/datasources/schedule-datasource-contract';
-import {TYPES} from "../../../core/types";
 import {Event} from "../domain/entities/event";
 import {Dependency} from "../domain/entities/dependency";
 
 @injectable()
-export class ScheduleRepositoryImpl implements ScheduleRepository {
+export class ScheduleRepositoryImpl implements ScheduleRepositoryContract {
     constructor(@inject(ScheduleDatasource) private readonly datasource: ScheduleDatasourceContract) {
     }
 
@@ -26,5 +25,3 @@ export class ScheduleRepositoryImpl implements ScheduleRepository {
         return this.datasource.getDependencies();
     }
 }
-
-export type ScheduleRepositoryType = ScheduleRepository;

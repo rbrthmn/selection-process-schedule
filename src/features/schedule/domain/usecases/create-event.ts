@@ -1,5 +1,5 @@
 import {injectable, inject} from 'inversify';
-import {ScheduleRepository} from '../repositories/schedule-repository';
+import {ScheduleRepository, ScheduleRepositoryContract} from '../repositories/schedule-repository-contract';
 import {TYPES} from '../../../../core/types';
 import {Event} from "../entities/event";
 
@@ -9,7 +9,7 @@ export interface CreateEventUseCase {
 
 @injectable()
 export class CreateEvent implements CreateEventUseCase {
-    constructor(@inject(TYPES.ScheduleRepository) private readonly repository: ScheduleRepository) {
+    constructor(@inject(ScheduleRepository) private readonly repository: ScheduleRepositoryContract) {
     }
 
     execute(event: Event): Event {
