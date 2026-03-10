@@ -2,7 +2,7 @@ import { ContainerModule } from 'inversify';
 import {TYPES} from "../../../core/types";
 import {LocalScheduleDatasourceImpl} from "../infrastructure/local-datasource";
 import {ScheduleRepositoryImpl} from "../infrastructure/repository";
-import {CreateEvent, CreateEventUseCase} from "../domain/usecases/create-event";
+import {CreateEvent, CreateEventUseCase, CreateEventUseCaseContract} from "../domain/usecases/create-event";
 import {GetEvents, GetEventsUseCase} from "../domain/usecases/get-events";
 import {CreateDependency, CreateDependencyUseCase} from "../domain/usecases/create-dependency";
 import {GetDependencies, GetDependenciesUseCase} from "../domain/usecases/get-dependencies";
@@ -21,7 +21,7 @@ export const scheduleModule = new ContainerModule((bind) => {
   bind<ScheduleRepositoryContract>(ScheduleRepository).to(ScheduleRepositoryImpl).inSingletonScope();
 
   // Use Cases
-  bind<CreateEventUseCase>(TYPES.CreateEventUseCase).to(CreateEvent);
+  bind<CreateEventUseCaseContract>(CreateEventUseCase).to(CreateEvent);
   bind<GetEventsUseCase>(TYPES.GetEventsUseCase).to(GetEvents);
   bind<CreateDependencyUseCase>(TYPES.CreateDependencyUseCase).to(CreateDependency);
   bind<GetDependenciesUseCase>(TYPES.GetDependenciesUseCase).to(GetDependencies);
