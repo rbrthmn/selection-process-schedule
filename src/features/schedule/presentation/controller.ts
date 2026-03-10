@@ -10,6 +10,7 @@ import {GetDependenciesUseCase} from "../domain/usecases/get-dependencies";
 import {AppError} from "../../../core/errors/custom-error";
 import {isHttpError} from "http-errors";
 import {Event} from "../domain/entities/event";
+import {Schedule} from "../domain/entities/schedule";
 
 const createEventSchema = z.object({
     name: z.string().min(1, 'Event name is required'),
@@ -25,13 +26,16 @@ const createDependencySchema = z.object({
     dislocationDays: z.number().int(),
 });
 
+interface ScheduleControllerContract {
+    createEvent(req: Request, res: Response, next: NextFunction): Promise<void>
+    getEvents(_req: Request, res: Response, next: NextFunction): Promise<void>
+}
+
 @controller('/schedule')
-export class ScheduleController {
+export class ScheduleController implements ScheduleControllerContract {
     constructor(
         @inject(TYPES.CreateEventUseCase) private readonly createEventUseCase: CreateEventUseCase,
         @inject(TYPES.GetEventsUseCase) private readonly getEventsUseCase: GetEventsUseCase,
-        @inject(TYPES.CreateDependencyUseCase) private readonly createDependencyUseCase: CreateDependencyUseCase,
-        @inject(TYPES.GetDependenciesUseCase) private readonly getDependenciesUseCase: GetDependenciesUseCase
     ) {
     }
 

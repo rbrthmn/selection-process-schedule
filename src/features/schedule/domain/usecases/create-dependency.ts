@@ -1,6 +1,5 @@
 import {injectable, inject} from 'inversify';
 import {ScheduleRepository, ScheduleRepositoryContract} from '../repositories/schedule-repository-contract';
-import {TYPES} from '../../../../core/types';
 import {Dependency} from "../entities/dependency";
 
 export interface CreateDependencyUseCase {
