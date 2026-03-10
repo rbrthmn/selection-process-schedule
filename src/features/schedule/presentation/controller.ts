@@ -2,15 +2,11 @@ import e, {Request, Response, NextFunction} from 'express';
 import {z} from 'zod';
 import {controller, httpPost, httpGet} from 'inversify-express-utils';
 import {inject} from 'inversify';
-import {TYPES} from "../../../core/types";
 import {CreateEventUseCase, CreateEventUseCaseContract} from "../domain/usecases/create-event";
 import {GetEventsUseCase, GetEventsUseCaseContract} from "../domain/usecases/get-events";
-import {CreateDependencyUseCase} from "../domain/usecases/create-dependency";
-import {GetDependenciesUseCase} from "../domain/usecases/get-dependencies";
 import {AppError} from "../../../core/errors/custom-error";
 import {isHttpError} from "http-errors";
 import {Event} from "../domain/entities/event";
-import {Schedule} from "../domain/entities/schedule";
 
 const createEventSchema = z.object({
     name: z.string().min(1, 'Event name is required'),
