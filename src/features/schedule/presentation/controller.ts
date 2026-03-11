@@ -11,8 +11,6 @@ import {Event} from "../domain/entities/event";
 const createEventSchema = z.object({
     name: z.string().min(1, 'Event name is required'),
     type: z.string().min(1, 'Event type is required'),
-    initialDate: z.string().datetime(),
-    endDate: z.string().datetime(),
     durationDays: z.number().int().positive(),
 });
 
@@ -43,8 +41,8 @@ export class ScheduleController implements ScheduleControllerContract {
                 '',
                 validatedData.name,
                 validatedData.type,
-                validatedData.initialDate,
-                validatedData.endDate,
+                null,
+                null,
                 [],
                 validatedData.durationDays
             ));
