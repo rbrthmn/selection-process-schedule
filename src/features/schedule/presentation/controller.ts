@@ -7,12 +7,7 @@ import {GetEventsUseCase, GetEventsUseCaseContract} from "../domain/usecases/get
 import {AppError} from "../../../core/errors/custom-error";
 import {isHttpError} from "http-errors";
 import {Event} from "../domain/entities/event";
-
-const createEventSchema = z.object({
-    name: z.string().min(1, 'Event name is required'),
-    type: z.string().min(1, 'Event type is required'),
-    durationDays: z.number().int().positive(),
-});
+import {createEventSchema} from "./schemas/create-event-schema";
 
 const createDependencySchema = z.object({
     eventId: z.string().min(1, 'Event ID is required'),
