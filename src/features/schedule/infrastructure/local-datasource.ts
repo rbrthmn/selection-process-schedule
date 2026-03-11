@@ -2,9 +2,17 @@ import {injectable} from 'inversify';
 import {ScheduleDatasourceContract} from '../domain/datasources/schedule-datasource-contract';
 import {Event} from "../domain/entities/event";
 import {Dependency} from "../domain/entities/dependency";
+import * as scheduleData from './mocks/schedule.json';
 
-const EVENTS_MOCK: Event[] = [];
-const DEPENDENCIES_MOCK: Dependency[] = [];
+const EVENTS_MOCK: Event[] = scheduleData.events;
+const DEPENDENCIES_MOCK: Dependency[] = scheduleData.dependencies.map((d: any) => {
+    const event = EVENTS_MOCK.find(e => e.id === d.event);
+    const previousEvent = EVENTS_MOCK.find(e => e.id === d.previousEvent);
+    if (!event || !previousEvent) {
+        throw new Error("Invalid dependency in mock data");
+    }
+    return new Dependency(d.id, event, previousEvent, d.dislocationDays);
+});
 
 @injectable()
 export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {

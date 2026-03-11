@@ -1,0 +1,45 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "name": "Kick-off",
+      "type": "milestone",
+      "initialDate": "2024-07-22T11:00:00.000Z",
+      "endDate": "2024-07-22T11:00:00.000Z",
+      "dependencies": [],
+      "durationDays": 0
+    },
+    {
+      "id": "2",
+      "name": "Abertura das inscrições",
+      "type": "task",
+      "initialDate": "2024-07-22T11:00:00.000Z",
+      "endDate": "2024-08-02T11:00:00.000Z",
+      "dependencies": [],
+      "durationDays": 10
+    },
+    {
+      "id": "3",
+      "name": "Encerramento das inscrições",
+      "type": "milestone",
+      "initialDate": "2024-08-02T11:00:00.000Z",
+      "endDate": "2024-08-02T11:00:00.000Z",
+      "dependencies": [],
+      "durationDays": 0
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "1",
+      "event": "2",
+      "previousEvent": "1",
+      "dislocationDays": 0
+    },
+    {
+      "id": "2",
+      "event": "3",
+      "previousEvent": "2",
+      "dislocationDays": 0
+    }
+  ]
+}
