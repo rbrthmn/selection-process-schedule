@@ -1,4 +1,11 @@
 {
+  "selection-processes": [
+    {
+      "id": "1",
+      "name": "Process Selection for the city LinkedIn",
+      "initialDate": "2026-01-01T11:00:00.000Z"
+    }
+  ],
   "events": [
     {
       "id": "1",
