@@ -9,10 +9,8 @@ import {isHttpError} from "http-errors";
 import {Event} from "../domain/entities/event";
 import {createEventSchema} from "./schemas/create-event-schema";
 
-const createDependencySchema = z.object({
-    eventId: z.string().min(1, 'Event ID is required'),
-    previousEventId: z.string().min(1, 'Previous event ID is required'),
-    dislocationDays: z.number().int(),
+const getEventsQuerySchema = z.object({
+    selectionProcessId: z.string().min(1, 'Selection process ID is required'),
 });
 
 interface ScheduleControllerContract {
