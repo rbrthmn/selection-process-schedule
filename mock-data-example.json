@@ -4,11 +4,17 @@
       "id": "1",
       "name": "Process Selection for the city LinkedIn",
       "initialDate": "2026-01-01T11:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "name": "Simples Process Selection",
+      "initialDate": "2026-01-01T11:00:00.000Z"
     }
   ],
   "events": [
     {
       "id": "0",
+      "selectionProcessId": "1",
       "name": "Publication of the call notice and annexes",
       "type": "task",
       "initialDate": null,
@@ -17,6 +23,7 @@
     },
     {
       "id": "1",
+      "selectionProcessId": "1",
       "name": "Application period and issuance of the application fee payment slip",
       "type": "task",
       "initialDate": null,
@@ -25,6 +32,7 @@
     },
     {
       "id": "2",
+      "selectionProcessId": "1",
       "name": "Request for application fee exemption",
       "type": "task",
       "initialDate": null,
@@ -33,6 +41,7 @@
     },
     {
       "id": "3",
+      "selectionProcessId": "1",
       "name": "Preliminary result of fee exemption requests",
       "type": "milestone",
       "initialDate": null,
@@ -41,6 +50,7 @@
     },
     {
       "id": "4",
+      "selectionProcessId": "1",
       "name": "Final result of fee exemption requests",
       "type": "milestone",
       "initialDate": null,
@@ -49,6 +59,7 @@
     },
     {
       "id": "5",
+      "selectionProcessId": "1",
       "name": "Deadline for payment of the application fee",
       "type": "milestone",
       "initialDate": null,
@@ -57,6 +68,7 @@
     },
     {
       "id": "6",
+      "selectionProcessId": "1",
       "name": "Preliminary result of approved applications",
       "type": "milestone",
       "initialDate": null,
@@ -65,6 +77,7 @@
     },
     {
       "id": "7",
+      "selectionProcessId": "1",
       "name": "Final result of approved applications",
       "type": "milestone",
       "initialDate": null,
@@ -73,6 +86,7 @@
     },
     {
       "id": "8",
+      "selectionProcessId": "1",
       "name": "Announcement of the exam location",
       "type": "milestone",
       "initialDate": null,
@@ -81,6 +95,7 @@
     },
     {
       "id": "9",
+      "selectionProcessId": "1",
       "name": "Objective test",
       "type": "task",
       "initialDate": null,
@@ -89,6 +104,7 @@
     },
     {
       "id": "10",
+      "selectionProcessId": "1",
       "name": "Discursive test",
       "type": "task",
       "initialDate": null,
@@ -97,6 +113,7 @@
     },
     {
       "id": "11",
+      "selectionProcessId": "1",
       "name": "Preliminary answer key",
       "type": "milestone",
       "initialDate": null,
@@ -105,6 +122,7 @@
     },
     {
       "id": "12",
+      "selectionProcessId": "1",
       "name": "Final answer key and preliminary objective test result",
       "type": "milestone",
       "initialDate": null,
@@ -113,6 +131,7 @@
     },
     {
       "id": "13",
+      "selectionProcessId": "1",
       "name": "Final result of the objective test",
       "type": "milestone",
       "initialDate": null,
@@ -121,6 +140,7 @@
     },
     {
       "id": "14",
+      "selectionProcessId": "1",
       "name": "Final result of the discursive test",
       "type": "milestone",
       "initialDate": null,
@@ -129,6 +149,7 @@
     },
     {
       "id": "15",
+      "selectionProcessId": "1",
       "name": "Medical evaluation for applicants with disabilities and verification of racial self-declaration",
       "type": "task",
       "initialDate": null,
@@ -137,6 +158,7 @@
     },
     {
       "id": "16",
+      "selectionProcessId": "1",
       "name": "Preliminary results of medical evaluations",
       "type": "milestone",
       "initialDate": null,
@@ -145,6 +167,7 @@
     },
     {
       "id": "17",
+      "selectionProcessId": "1",
       "name": "Preliminary result of the selection process",
       "type": "milestone",
       "initialDate": null,
@@ -153,6 +176,7 @@
     },
     {
       "id": "18",
+      "selectionProcessId": "1",
       "name": "Final result and 1st admission call",
       "type": "milestone",
       "initialDate": null,
@@ -161,6 +185,7 @@
     },
     {
       "id": "19",
+      "selectionProcessId": "1",
       "name": "Enrollment for the 1st call and start of the program",
       "type": "task",
       "initialDate": null,
@@ -169,6 +194,7 @@
     },
     {
       "id": "20",
+      "selectionProcessId": "1",
       "name": "2nd admission call",
       "type": "milestone",
       "initialDate": null,
@@ -177,6 +203,7 @@
     },
     {
       "id": "21",
+      "selectionProcessId": "1",
       "name": "Enrollment for the 2nd call",
       "type": "task",
       "initialDate": null,
@@ -185,6 +212,7 @@
     },
     {
       "id": "22",
+      "selectionProcessId": "1",
       "name": "3rd admission call",
       "type": "milestone",
       "initialDate": null,
@@ -193,24 +221,41 @@
     },
     {
       "id": "23",
+      "selectionProcessId": "1",
       "name": "Enrollment for the 3rd call",
       "type": "task",
       "initialDate": null,
       "endDate": null,
       "durationDays": 1
+    },
+    {
+      "id": "24",
+      "selectionProcessId": "2",
+      "name": "Event A",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 0
+    },
+    {
+      "id": "25",
+      "selectionProcessId": "2",
+      "name": "Event B",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 0
     }
   ],
   "dependencies": [
     {
-      "id": "0",
-      "event": "1",
-      "previousEvent": "0",
+      "eventId": "24",
+      "previousEventId": "25",
       "dislocationDays": 0
     },
     {
-      "id": "1",
-      "event": "2",
-      "previousEvent": "1",
+      "eventId": "25",
+      "previousEventId": "24",
       "dislocationDays": 0
     }
   ]
