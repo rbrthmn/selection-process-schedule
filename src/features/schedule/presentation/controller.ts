@@ -15,7 +15,7 @@ const getEventsQuerySchema = z.object({
 
 interface ScheduleControllerContract {
     createEvent(req: Request, res: Response, next: NextFunction): Promise<void>
-    getEvents(_req: Request, res: Response, next: NextFunction): Promise<void>
+    getEvents(req: Request, res: Response, next: NextFunction): Promise<void>
 }
 
 @controller('/schedule')
@@ -46,12 +46,13 @@ export class ScheduleController implements ScheduleControllerContract {
     }
 
     @httpGet('/events')
-    public async getEvents(_req: Request, res: Response, next: NextFunction): Promise<void> {
+    public async getEvents(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            const events = this.getEventsUseCase.execute();
+            const { selectionProcessId } = getEventsQuerySchema.parse(req.query);
+            const events = this.getEventsUseCase.execute(selectionProcessId);
             res.status(200).json(events);
         } catch (error: any) {
-            next(AppError.internalServer('An unexpected error occurred'));
+            this.handleError(error, next);
         }
     }
 

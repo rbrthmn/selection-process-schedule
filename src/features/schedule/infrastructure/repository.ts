@@ -13,8 +13,8 @@ export class ScheduleRepositoryImpl implements ScheduleRepositoryContract {
         return this.datasource.createEvent(event);
     }
 
-    getEvents(): Event[] {
-        return this.datasource.getEvents();
+    getEvents(selectionProcessId: string): Event[] {
+        return this.datasource.getEvents(selectionProcessId);
     }
 
     createDependency(dependency: Dependency): Dependency {

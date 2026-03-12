@@ -52,16 +52,18 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
         return newEvent;
     }
 
-    getEvents(): Event[] {
-        return this.data.events.map((e: any) => new Event(
-            e.id,
-            e.name,
-            e.type,
-            e.initialDate,
-            e.endDate,
-            e.dependencies || [],
-            e.durationDays
-        ));
+    getEvents(selectionProcessId: string): Event[] {
+        return this.data.events
+            .filter((e: any) => e.selectionProcessId === selectionProcessId)
+            .map((e: any) => new Event(
+                e.id,
+                e.selectionProcessId,
+                e.name,
+                e.type,
+                e.initialDate,
+                e.endDate,
+                e.durationDays
+            ));
     }
 
     createDependency(dependency: Dependency): Dependency {
@@ -82,13 +84,13 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
             }
 
             const event = new Event(
-                eventData.id, eventData.name, eventData.type, eventData.initialDate, 
-                eventData.endDate, eventData.dependencies || [], eventData.durationDays
+                eventData.id, eventData.selectionProcessId, eventData.name, eventData.type, eventData.initialDate, 
+                eventData.endDate, eventData.durationDays
             );
             
             const previousEvent = new Event(
-                previousEventData.id, previousEventData.name, previousEventData.type, previousEventData.initialDate, 
-                previousEventData.endDate, previousEventData.dependencies || [], previousEventData.durationDays
+                previousEventData.id, previousEventData.selectionProcessId, previousEventData.name, previousEventData.type, previousEventData.initialDate, 
+                previousEventData.endDate, previousEventData.durationDays
             );
 
             return new Dependency(event.id, previousEvent.id, d.dislocationDays);

@@ -6,7 +6,7 @@ export const ScheduleDatasource = Symbol.for('ScheduleDatasource');
 export interface ScheduleDatasourceContract {
     createEvent(event: Event): Event;
 
-    getEvents(): Event[];
+    getEvents(selectionProcessId: string): Event[];
 
     createDependency(dependency: Dependency): Dependency;
 

@@ -3,7 +3,7 @@ import {ScheduleRepository, ScheduleRepositoryContract} from '../repositories/sc
 import {Event} from "../entities/event";
 
 export interface GetEventsUseCaseContract {
-    execute(): Event[];
+    execute(selectionProcessId: string): Event[];
 }
 
 export const GetEventsUseCase = Symbol.for('GetEventsUseCase')
@@ -13,7 +13,7 @@ export class GetEvents implements GetEventsUseCaseContract {
     constructor(@inject(ScheduleRepository) private readonly repository: ScheduleRepositoryContract) {
     }
 
-    execute(): Event[] {
-        return this.repository.getEvents();
+    execute(selectionProcessId: string): Event[] {
+        return this.repository.getEvents(selectionProcessId);
     }
 }
