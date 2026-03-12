@@ -41,11 +41,11 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
     createEvent(event: Event): Event {
         const newEvent = new Event(
             (this.data.events.length + 1).toString(),
+            event.selectionProcessId,
             event.name,
             event.type,
             event.initialDate,
             event.endDate,
-            [],
             event.durationDays
         );
         this.data.events.push(newEvent);
@@ -65,16 +65,11 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
     }
 
     createDependency(dependency: Dependency): Dependency {
-        const newEvent = new Event(
-            (this.data.events.length + 1).toString(),
-            '',
-            '',
-            '',
-            '',
-            [],
-           0
+        return new Dependency(
+            dependency.eventId,
+            dependency.previousEventId,
+            dependency.dislocationDays
         );
-        return new Dependency("", newEvent, newEvent, 0);
     }
 
     getDependencies(): Dependency[] {
@@ -96,7 +91,7 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
                 previousEventData.endDate, previousEventData.dependencies || [], previousEventData.durationDays
             );
 
-            return new Dependency(d.id, event, previousEvent, d.dislocationDays);
+            return new Dependency(event.id, previousEvent.id, d.dislocationDays);
         }).filter((d: Dependency | null) => d !== null) as Dependency[];
     }
 }

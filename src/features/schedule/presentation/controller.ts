@@ -34,11 +34,11 @@ export class ScheduleController implements ScheduleControllerContract {
             const validatedData = createEventSchema.parse(req.body);
             const newEvent = this.createEventUseCase.execute(new Event(
                 '',
+                validatedData.selectionProcessId,
                 validatedData.name,
                 validatedData.type,
                 null,
                 null,
-                [],
                 validatedData.durationDays
             ));
             res.status(201).json(newEvent);

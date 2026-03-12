@@ -1,10 +1,8 @@
-import {Event} from "./event";
-
-export class Schedule {
+export class SelectionProcess {
     constructor(
         public id: string,
+        public name: string,
         public initialDate: string,
-        public events: Event[]
     ) {
     }
 }
