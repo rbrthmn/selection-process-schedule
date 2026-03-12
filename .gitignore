@@ -147,3 +147,5 @@ vite.config.ts.timestamp-*
 /dataSources.local.xml
 
 .idea
+
+mock-data.json
