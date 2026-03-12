@@ -8,44 +8,209 @@
   ],
   "events": [
     {
+      "id": "0",
+      "name": "Publication of the call notice and annexes",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
       "id": "1",
-      "name": "Kick-off",
-      "type": "milestone",
-      "initialDate": "2024-07-22T11:00:00.000Z",
-      "endDate": "2024-07-22T11:00:00.000Z",
-      "dependencies": [],
-      "durationDays": 0
+      "name": "Application period and issuance of the application fee payment slip",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 13
     },
     {
       "id": "2",
-      "name": "Abertura das inscrições",
+      "name": "Request for application fee exemption",
       "type": "task",
-      "initialDate": "2024-07-22T11:00:00.000Z",
-      "endDate": "2024-08-02T11:00:00.000Z",
-      "dependencies": [],
-      "durationDays": 10
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 2
     },
     {
       "id": "3",
-      "name": "Encerramento das inscrições",
+      "name": "Preliminary result of fee exemption requests",
       "type": "milestone",
-      "initialDate": "2024-08-02T11:00:00.000Z",
-      "endDate": "2024-08-02T11:00:00.000Z",
-      "dependencies": [],
-      "durationDays": 0
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "4",
+      "name": "Final result of fee exemption requests",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "5",
+      "name": "Deadline for payment of the application fee",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "6",
+      "name": "Preliminary result of approved applications",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "7",
+      "name": "Final result of approved applications",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "8",
+      "name": "Announcement of the exam location",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "9",
+      "name": "Objective test",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "10",
+      "name": "Discursive test",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "11",
+      "name": "Preliminary answer key",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "12",
+      "name": "Final answer key and preliminary objective test result",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "13",
+      "name": "Final result of the objective test",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "14",
+      "name": "Final result of the discursive test",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "15",
+      "name": "Medical evaluation for applicants with disabilities and verification of racial self-declaration",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "16",
+      "name": "Preliminary results of medical evaluations",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "17",
+      "name": "Preliminary result of the selection process",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "18",
+      "name": "Final result and 1st admission call",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "19",
+      "name": "Enrollment for the 1st call and start of the program",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "20",
+      "name": "2nd admission call",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "21",
+      "name": "Enrollment for the 2nd call",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "22",
+      "name": "3rd admission call",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
+    },
+    {
+      "id": "23",
+      "name": "Enrollment for the 3rd call",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1
     }
   ],
   "dependencies": [
     {
-      "id": "1",
-      "event": "2",
-      "previousEvent": "1",
+      "id": "0",
+      "event": "1",
+      "previousEvent": "0",
       "dislocationDays": 0
     },
     {
-      "id": "2",
-      "event": "3",
-      "previousEvent": "2",
+      "id": "1",
+      "event": "2",
+      "previousEvent": "1",
       "dislocationDays": 0
     }
   ]
