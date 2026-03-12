@@ -3,7 +3,8 @@ import {LocalScheduleDatasourceImpl} from "../infrastructure/local-datasource";
 import {ScheduleRepositoryImpl} from "../infrastructure/repository";
 import {CreateEvent, CreateEventUseCase, CreateEventUseCaseContract} from "../domain/usecases/create-event";
 import {GetEvents, GetEventsUseCase, GetEventsUseCaseContract} from "../domain/usecases/get-events";
-import "../presentation/controller";
+import {EditEvent, EditEventUseCase, EditEventUseCaseContract} from "../domain/usecases/edit-event";
+import {DeleteEvent, DeleteEventUseCase, DeleteEventUseCaseContract} from "../domain/usecases/delete-event";
 import {ScheduleDatasource, ScheduleDatasourceContract} from "../domain/datasources/schedule-datasource-contract";
 import {
   ScheduleRepository,
@@ -20,4 +21,6 @@ export const scheduleModule = new ContainerModule((bind) => {
   // Use Cases
   bind<CreateEventUseCaseContract>(CreateEventUseCase).to(CreateEvent);
   bind<GetEventsUseCaseContract>(GetEventsUseCase).to(GetEvents);
+  bind<EditEventUseCaseContract>(EditEventUseCase).to(EditEvent);
+  bind<DeleteEventUseCaseContract>(DeleteEventUseCase).to(DeleteEvent);
 });

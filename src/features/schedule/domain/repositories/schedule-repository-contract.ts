@@ -8,9 +8,11 @@ export interface ScheduleRepositoryContract {
 
     getEvents(selectionProcessId: string): Event[];
 
+    updateEvent(event: Event): Event;
+
+    deleteEvent(id: string): void;
+
     createDependency(dependency: Dependency): Dependency;
 
     getDependencies(): Dependency[];
-
-    // Add other abstract methods for schedule-related operations as needed
 }

@@ -66,6 +66,33 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
             ));
     }
 
+    updateEvent(event: Event): Event {
+        const index = this.data.events.findIndex((e: any) => e.id === event.id);
+        if (index === -1) {
+            throw new Error(`Event with id ${event.id} not found`);
+        }
+        
+        this.data.events[index] = {
+            ...this.data.events[index],
+            name: event.name,
+            type: event.type,
+            initialDate: event.initialDate,
+            endDate: event.endDate,
+            durationDays: event.durationDays,
+            selectionProcessId: event.selectionProcessId
+        };
+        return event;
+    }
+
+    deleteEvent(id: string): void {
+        const index = this.data.events.findIndex((e: any) => e.id === id);
+        if (index !== -1) {
+            this.data.events.splice(index, 1);
+            // Also remove dependencies related to this event
+            this.data.dependencies = this.data.dependencies.filter((d: any) => d.event !== id && d.previousEvent !== id);
+        }
+    }
+
     createDependency(dependency: Dependency): Dependency {
         return new Dependency(
             dependency.eventId,

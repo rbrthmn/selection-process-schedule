@@ -17,6 +17,14 @@ export class ScheduleRepositoryImpl implements ScheduleRepositoryContract {
         return this.datasource.getEvents(selectionProcessId);
     }
 
+    updateEvent(event: Event): Event {
+        return this.datasource.updateEvent(event);
+    }
+
+    deleteEvent(id: string): void {
+        this.datasource.deleteEvent(id);
+    }
+
     createDependency(dependency: Dependency): Dependency {
         return this.datasource.createDependency(dependency);
     }
