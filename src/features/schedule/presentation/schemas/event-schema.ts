@@ -5,5 +5,6 @@ export const eventSchema = z.object({
     name: z.string().min(1, 'Event name is required'),
     type: z.string().min(1, 'Event type is required'),
     durationDays: z.number().int().positive(),
+    isActive: z.boolean().default(true),
     dependencies: z.array(z.number()).default([]),
 });

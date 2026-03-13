@@ -7,6 +7,7 @@ export class Event {
         public initialDate: string|null,
         public endDate: string|null,
         public durationDays: number,
+        public isActive: boolean = true
     ) {
     }
 }

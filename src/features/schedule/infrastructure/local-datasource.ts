@@ -46,7 +46,8 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
             event.type,
             event.initialDate,
             event.endDate,
-            event.durationDays
+            event.durationDays,
+            event.isActive
         );
         this.data.events.push(newEvent);
         return newEvent;
@@ -62,7 +63,8 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
                 e.type,
                 e.initialDate,
                 e.endDate,
-                e.durationDays
+                e.durationDays,
+                e.isActive ?? true
             ));
     }
 
@@ -79,7 +81,8 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
             initialDate: event.initialDate,
             endDate: event.endDate,
             durationDays: event.durationDays,
-            selectionProcessId: event.selectionProcessId
+            selectionProcessId: event.selectionProcessId,
+            isActive: event.isActive
         };
         return event;
     }
@@ -112,12 +115,12 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
 
             const event = new Event(
                 eventData.id, eventData.selectionProcessId, eventData.name, eventData.type, eventData.initialDate, 
-                eventData.endDate, eventData.durationDays
+                eventData.endDate, eventData.durationDays, eventData.isActive ?? true
             );
             
             const previousEvent = new Event(
                 previousEventData.id, previousEventData.selectionProcessId, previousEventData.name, previousEventData.type, previousEventData.initialDate, 
-                previousEventData.endDate, previousEventData.durationDays
+                previousEventData.endDate, previousEventData.durationDays, previousEventData.isActive ?? true
             );
 
             return new Dependency(event.id, previousEvent.id, d.dislocationDays);

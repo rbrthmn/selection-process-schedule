@@ -19,7 +19,8 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "1",
@@ -28,7 +29,8 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 13
+      "durationDays": 13,
+      "isActive": true
     },
     {
       "id": "2",
@@ -37,7 +39,8 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 2
+      "durationDays": 2,
+      "isActive": true
     },
     {
       "id": "3",
@@ -46,7 +49,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "4",
@@ -55,7 +59,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "5",
@@ -64,7 +69,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "6",
@@ -73,7 +79,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "7",
@@ -82,7 +89,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "8",
@@ -91,7 +99,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "9",
@@ -100,7 +109,8 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "10",
@@ -109,7 +119,8 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "11",
@@ -118,7 +129,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "12",
@@ -127,7 +139,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "13",
@@ -136,7 +149,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "14",
@@ -145,7 +159,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "15",
@@ -154,7 +169,8 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "16",
@@ -163,7 +179,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "17",
@@ -172,7 +189,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "18",
@@ -181,7 +199,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "19",
@@ -190,7 +209,8 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "20",
@@ -199,7 +219,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "21",
@@ -208,7 +229,8 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "22",
@@ -217,7 +239,8 @@
       "type": "milestone",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "23",
@@ -226,7 +249,8 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 1
+      "durationDays": 1,
+      "isActive": true
     },
     {
       "id": "24",
@@ -235,7 +259,8 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 0
+      "durationDays": 0,
+      "isActive": true
     },
     {
       "id": "25",
@@ -244,7 +269,8 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 0
+      "durationDays": 0,
+      "isActive": true
     }
   ],
   "dependencies": [

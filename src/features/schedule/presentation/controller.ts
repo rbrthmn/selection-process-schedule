@@ -47,7 +47,8 @@ export class ScheduleController implements ScheduleControllerContract {
                 validatedData.type,
                 null,
                 null,
-                validatedData.durationDays
+                validatedData.durationDays,
+                validatedData.isActive
             ));
             res.status(201).json(newEvent);
         } catch (error: any) {
@@ -78,7 +79,8 @@ export class ScheduleController implements ScheduleControllerContract {
                 validatedData.type,
                 null,
                 null,
-                validatedData.durationDays
+                validatedData.durationDays,
+                validatedData.isActive
             ));
             res.status(200).json(updatedEvent);
         } catch (error: any) {
