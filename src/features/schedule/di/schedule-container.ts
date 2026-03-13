@@ -10,6 +10,7 @@ import {
   ScheduleRepository,
   ScheduleRepositoryContract,
 } from "../domain/repositories/schedule-repository-contract";
+import "../presentation/controller";
 
 export const scheduleModule = new ContainerModule((bind) => {
   // Data Sources

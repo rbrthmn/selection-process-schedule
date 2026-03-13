@@ -4,7 +4,7 @@ import {Container} from 'inversify';
 import express, {Request, Response, NextFunction} from 'express';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
-import {HttpCode, ONE_HUNDRED, ONE_THOUSAND, SIXTY} from './core/constants';
+import {ONE_HUNDRED, ONE_THOUSAND, SIXTY} from './core/constants';
 import {ErrorMiddleware} from './core/middlewares/error-middleware';
 import {AppError} from "./core/errors/custom-error";
 
