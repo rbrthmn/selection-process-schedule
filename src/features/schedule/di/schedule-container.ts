@@ -11,6 +11,7 @@ import {
   ScheduleRepositoryContract,
 } from "../domain/repositories/schedule-repository-contract";
 import "../presentation/controller";
+import {EventValidator, EventValidatorContract, EventValidatorSymbol} from "../domain/services/event-validator";
 
 export const scheduleModule = new ContainerModule((bind) => {
   // Data Sources
@@ -24,4 +25,6 @@ export const scheduleModule = new ContainerModule((bind) => {
   bind<GetEventsUseCaseContract>(GetEventsUseCase).to(GetEvents);
   bind<EditEventUseCaseContract>(EditEventUseCase).to(EditEvent);
   bind<DeleteEventUseCaseContract>(DeleteEventUseCase).to(DeleteEvent);
+
+  bind<EventValidatorContract>(EventValidatorSymbol).to(EventValidator).inSingletonScope();
 });
