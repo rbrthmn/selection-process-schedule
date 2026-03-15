@@ -10,14 +10,9 @@ import {AppError} from "../../../core/errors/custom-error";
 import {isHttpError} from "http-errors";
 import {Event} from "../domain/entities/event";
 import {eventSchema} from "./schemas/event-schema";
+import {getEventsQuerySchema} from "./schemas/get-events-schema";
+import {deleteEventSchema} from "./schemas/delet-event-schema";
 
-const getEventsQuerySchema = z.object({
-    selectionProcessId: z.string().min(1, 'Selection process ID is required'),
-});
-
-const deleteEventSchema = z.object({
-    id: z.string().min(1, 'Event ID is required'),
-});
 
 interface ScheduleControllerContract {
     createEvent(req: Request, res: Response, next: NextFunction): Promise<void>
@@ -60,8 +55,8 @@ export class ScheduleController implements ScheduleControllerContract {
     public async getEvents(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const { selectionProcessId } = getEventsQuerySchema.parse(req.query);
-            const events = this.getEventsUseCase.execute(selectionProcessId);
-            res.status(200).json(events);
+            const response = this.getEventsUseCase.execute(selectionProcessId);
+            res.status(200).json(response);
         } catch (error: any) {
             this.handleError(error, next);
         }
