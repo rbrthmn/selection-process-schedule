@@ -7,7 +7,7 @@ import * as path from 'path';
 
 @injectable()
 export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
-    private data: { events: any[], dependencies: any[] } = { events: [], dependencies: [] };
+    private data: { events: any[], dependencies: any[] } = {events: [], dependencies: []};
     private readonly mockFilePath = path.join(process.cwd(), 'mock-data.json');
     private readonly exampleFilePath = path.join(process.cwd(), 'mock-data-example.json');
 
@@ -34,7 +34,7 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
             if (!this.data.dependencies) this.data.dependencies = [];
         } catch (error) {
             console.error("Error initializing local datasource:", error);
-            this.data = { events: [], dependencies: [] };
+            this.data = {events: [], dependencies: []};
         }
     }
 
@@ -73,7 +73,7 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
         if (index === -1) {
             throw new Error(`Event with id ${event.id} not found`);
         }
-        
+
         this.data.events[index] = {
             ...this.data.events[index],
             name: event.name,
@@ -91,7 +91,7 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
         const index = this.data.events.findIndex((e: any) => e.id === id);
         if (index !== -1) {
             this.data.events.splice(index, 1);
-            // Also remove dependencies related to this event
+            // TODO Also remove dependencies related to this event
             this.data.dependencies = this.data.dependencies.filter((d: any) => d.event !== id && d.previousEvent !== id);
         }
     }
@@ -104,26 +104,12 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
         );
     }
 
-    getDependencies(): Dependency[] {
-        return this.data.dependencies.map((d: any) => {
-            const eventData = this.data.events.find((e: any) => e.id === d.event);
-            const previousEventData = this.data.events.find((e: any) => e.id === d.previousEvent);
-            
-            if (!eventData || !previousEventData) {
-                return null;
-            }
-
-            const event = new Event(
-                eventData.id, eventData.selectionProcessId, eventData.name, eventData.type, eventData.initialDate, 
-                eventData.endDate, eventData.durationDays, eventData.isActive ?? true
-            );
-            
-            const previousEvent = new Event(
-                previousEventData.id, previousEventData.selectionProcessId, previousEventData.name, previousEventData.type, previousEventData.initialDate, 
-                previousEventData.endDate, previousEventData.durationDays, previousEventData.isActive ?? true
-            );
-
-            return new Dependency(event.id, previousEvent.id, d.dislocationDays);
-        }).filter((d: Dependency | null) => d !== null) as Dependency[];
+    getDependencies(eventsIds: string[]): Dependency[] {
+        return this.data.dependencies
+            .map((d: any) => {
+                return new Dependency(d.eventId, d.previousEventId, d.dislocationDays);
+            })
+            .filter((d: Dependency | null) => d !== null)
+            .filter((d: Dependency) => eventsIds.includes(d.eventId) || eventsIds.includes(d.previousEventId)) as Dependency[];
     }
 }

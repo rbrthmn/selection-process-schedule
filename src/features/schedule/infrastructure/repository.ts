@@ -29,7 +29,7 @@ export class ScheduleRepositoryImpl implements ScheduleRepositoryContract {
         return this.datasource.createDependency(dependency);
     }
 
-    getDependencies(): Dependency[] {
-        return this.datasource.getDependencies();
+    getDependencies(eventsIds: string[]): Dependency[] {
+        return this.datasource.getDependencies(eventsIds);
     }
 }
