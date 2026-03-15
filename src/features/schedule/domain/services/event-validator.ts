@@ -10,14 +10,14 @@ import {Dependency} from "../entities/dependency";
 export const EventValidatorSymbol = Symbol.for('EventValidator');
 
 export interface EventValidatorContract {
-    validateCyclicDependency(newData: object, events: Event[], dependencies: Dependency[]): boolean;
+    hasCyclicDependency(newData: object, events: Event[], dependencies: Dependency[]): boolean;
 }
 
 @injectable()
 export class EventValidator implements EventValidatorContract {
     constructor(@inject(Pipeline) private pipeline: Pipeline) {}
 
-    validateCyclicDependency(newData: object, events: Event[], dependencies: Dependency[]): boolean {
+    hasCyclicDependency(newData: object, events: Event[], dependencies: Dependency[]): boolean {
         const payload = {
             newData: newData,
             events: events,

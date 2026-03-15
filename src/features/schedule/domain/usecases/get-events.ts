@@ -21,8 +21,6 @@ export class GetEvents implements GetEventsUseCaseContract {
         const events = this.repository.getEvents(selectionProcessId)
         const dependencies = this.repository.getDependencies(events.map(event => event.id))
 
-        this.validator.validateCyclicDependency([], events, dependencies)
-
-        return [];
+        return this.validator.hasCyclicDependency([], events, dependencies) ? [] : events;
     }
 }

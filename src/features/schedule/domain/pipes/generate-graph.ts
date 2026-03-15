@@ -3,7 +3,7 @@ import {Pipe} from "../../../../core/services/pipe";
 export class GenerateGraph implements Pipe {
     handle(payload: any, next: (payload: any) => any): any {
         const graph = Object.fromEntries(
-            payload.vertexes.map((vertex: string) => [vertex, []])
+            payload.vertexes.map((vertex: number) => [vertex, []])
         );
 
         for (const edge of payload.edges) {
