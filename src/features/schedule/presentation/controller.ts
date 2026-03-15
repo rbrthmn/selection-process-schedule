@@ -65,18 +65,14 @@ export class ScheduleController implements ScheduleControllerContract {
     @httpPut('/events/:id')
     public async editEvent(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
-            const { id } = req.params;
+            const { selectionProcessId } = getEventsQuerySchema.parse(req.query);
+            const { eventId } = req.params;
             const validatedData = eventSchema.parse(req.body);
-            const updatedEvent = this.editEventUseCase.execute(new Event(
-                id,
-                validatedData.selectionProcessId,
-                validatedData.name,
-                validatedData.type,
-                null,
-                null,
-                validatedData.durationDays,
-                validatedData.isActive
-            ));
+            const updatedEvent = this.editEventUseCase.execute(
+                selectionProcessId,
+                eventId,
+                validatedData
+            );
             res.status(200).json(updatedEvent);
         } catch (error: any) {
             this.handleError(error, next);

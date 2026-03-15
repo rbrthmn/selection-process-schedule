@@ -14,5 +14,7 @@ export interface ScheduleRepositoryContract {
 
     createDependency(dependency: Dependency): Dependency;
 
+    deleteDependencies(eventId: string): void;
+
     getDependencies(eventsIds: string[]): Dependency[];
 }

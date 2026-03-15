@@ -9,6 +9,10 @@ export class ScheduleRepositoryImpl implements ScheduleRepositoryContract {
     constructor(@inject(ScheduleDatasource) private readonly datasource: ScheduleDatasourceContract) {
     }
 
+    deleteDependencies(eventId: string): void {
+        this.datasource.deleteDependencies(eventId)
+    }
+
     createEvent(event: Event): Event {
         return this.datasource.createEvent(event);
     }

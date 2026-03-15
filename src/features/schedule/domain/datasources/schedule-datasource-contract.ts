@@ -15,4 +15,6 @@ export interface ScheduleDatasourceContract {
     createDependency(dependency: Dependency): Dependency;
 
     getDependencies(eventsIds: string[]): Dependency[];
+
+    deleteDependencies(eventId: string): void;
 }

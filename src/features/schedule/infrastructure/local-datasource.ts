@@ -38,6 +38,11 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
         }
     }
 
+    deleteDependencies(eventId: string): void {
+        this.data.dependencies = this.data.dependencies.filter((d: any) => d.eventId !== eventId)
+        this.data.dependencies = this.data.dependencies.filter((d: any) => d.previousEventId !== eventId)
+    }
+
     createEvent(event: Event): Event {
         const newEvent = new Event(
             (this.data.events.length + 1).toString(),
@@ -91,8 +96,7 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
         const index = this.data.events.findIndex((e: any) => e.id === id);
         if (index !== -1) {
             this.data.events.splice(index, 1);
-            // TODO Also remove dependencies related to this event
-            this.data.dependencies = this.data.dependencies.filter((d: any) => d.event !== id && d.previousEvent !== id);
+            this.deleteDependencies(id)
         }
     }
 
