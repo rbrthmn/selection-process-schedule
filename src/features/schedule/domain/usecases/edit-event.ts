@@ -1,7 +1,7 @@
 import {injectable, inject} from 'inversify';
 import {ScheduleRepository, ScheduleRepositoryContract} from '../repositories/schedule-repository-contract';
 import {Event} from "../entities/event";
-import {EventValidator, EventValidatorSymbol} from "../services/event-validator";
+import {EventValidator, EventValidatorContract, EventValidatorSymbol} from "../services/event-validator";
 import {Dependency} from '../entities/dependency';
 import {AppError} from "../../../../core/errors/custom-error";
 
@@ -20,7 +20,7 @@ export const EditEventUseCase = Symbol.for('EditEventUseCase')
 export class EditEvent implements EditEventUseCaseContract {
     constructor(
         @inject(ScheduleRepository) private readonly repository: ScheduleRepositoryContract,
-        @inject(EventValidatorSymbol) private readonly validator: EventValidator
+        @inject(EventValidatorSymbol) private readonly validator: EventValidatorContract
     ) {
     }
 
