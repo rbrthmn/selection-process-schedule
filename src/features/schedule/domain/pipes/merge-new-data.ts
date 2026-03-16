@@ -1,6 +1,18 @@
 import {Pipe} from "../../../../core/services/pipe";
 
+/**
+ * @class MergeNewData
+ * @implements {Pipe}
+ * @description Pipe for merging new event data, specifically dependencies, into the existing payload.
+ */
 export class MergeNewData implements Pipe {
+    /**
+     * @method handle
+     * @param {any} payload - The payload containing existing data and potentially new data.
+     * @param {(payload: any) => any} next - The next pipe in the chain.
+     * @returns {any} The result of the next pipe.
+     * @description Merges new event dependencies from `payload.newData` into `payload.edges`.
+     */
     handle(payload: any, next: (payload: any) => any): any {
         const { newData } = payload['newData'];
 

@@ -7,6 +7,10 @@ import {container} from './di/inversify-config';
     main();
 })();
 
+/**
+ * @function main
+ * @description The entry point of the application. It initializes the server and starts it.
+ */
 function main(): void {
     const server = new Server({
         port: envs.PORT,

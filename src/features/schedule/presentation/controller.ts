@@ -21,6 +21,10 @@ interface ScheduleControllerContract {
     deleteEvent(req: Request, res: Response, next: NextFunction): Promise<void>
 }
 
+/**
+ * @controller ScheduleController
+ * @description Controller for handling schedule-related requests.
+ */
 @controller('/schedule')
 export class ScheduleController implements ScheduleControllerContract {
     constructor(
@@ -31,6 +35,13 @@ export class ScheduleController implements ScheduleControllerContract {
     ) {
     }
 
+    /**
+     * @endpoint POST /schedule/events
+     * @param {Request} req - The express request object.
+     * @param {Response} res - The express response object.
+     * @param {NextFunction} next - The express next function.
+     * @description Creates a new event.
+     */
     @httpPost('/events')
     public async createEvent(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
@@ -51,6 +62,13 @@ export class ScheduleController implements ScheduleControllerContract {
         }
     }
 
+    /**
+     * @endpoint GET /schedule/events
+     * @param {Request} req - The express request object.
+     * @param {Response} res - The express response object.
+     * @param {NextFunction} next - The express next function.
+     * @description Retrieves all events for a given selection process.
+     */
     @httpGet('/events')
     public async getEvents(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
@@ -62,6 +80,13 @@ export class ScheduleController implements ScheduleControllerContract {
         }
     }
 
+    /**
+     * @endpoint PUT /schedule/events/:id
+     * @param {Request} req - The express request object.
+     * @param {Response} res - The express response object.
+     * @param {NextFunction} next - The express next function.
+     * @description Edits an existing event.
+     */
     @httpPut('/events/:id')
     public async editEvent(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
@@ -79,6 +104,13 @@ export class ScheduleController implements ScheduleControllerContract {
         }
     }
 
+    /**
+     * @endpoint DELETE /schedule/events/:id
+     * @param {Request} req - The express request object.
+     * @param {Response} res - The express response object.
+     * @param {NextFunction} next - The express next function.
+     * @description Deletes an event.
+     */
     @httpDelete('/events/:id')
     public async deleteEvent(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
@@ -90,6 +122,13 @@ export class ScheduleController implements ScheduleControllerContract {
         }
     }
 
+    /**
+     * @method handleError
+     * @param {any} error - The error object.
+     * @param {e.NextFunction} next - The express next function.
+     * @description Handles errors for the controller methods.
+     * @private
+     */
     private handleError(error: any, next: e.NextFunction) {
         if (error instanceof z.ZodError) {
             next(AppError.badRequest('Validation Error', error.errors.map(err => ({

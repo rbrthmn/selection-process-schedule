@@ -11,6 +11,11 @@ export interface EditEventUseCaseContract {
 
 export const EditEventUseCase = Symbol.for('EditEventUseCase')
 
+/**
+ * @class EditEvent
+ * @implements {EditEventUseCaseContract}
+ * @description Use case for editing an existing event.
+ */
 @injectable()
 export class EditEvent implements EditEventUseCaseContract {
     constructor(
@@ -19,6 +24,16 @@ export class EditEvent implements EditEventUseCaseContract {
     ) {
     }
 
+    /**
+     * @method execute
+     * @param {string} selectionProcessId - The ID of the selection process.
+     * @param {string} eventId - The ID of the event to be edited.
+     * @param {any} validatedData - The new data for the event.
+     * @returns {Event} The updated event.
+     * @throws {AppError} If a cyclic dependency is detected.
+     * @throws {Error} If the event is not found.
+     * @description Executes the use case to edit an event, checking for cyclic dependencies before updating.
+     */
     execute(selectionProcessId: string, eventId: string, validatedData: any): Event {
         const events = this.repository.getEvents(selectionProcessId);
         const dependencies = this.repository.getDependencies(events.map(event => event.id));
