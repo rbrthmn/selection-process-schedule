@@ -1,11 +1,13 @@
-import { describe, it, expect, beforeEach, jest } from '@jest/globals';
-import { EditEvent } from '../../../../../src/features/schedule/domain/usecases/edit-event';
-import { ScheduleRepositoryContract } from '../../../../../src/features/schedule/domain/repositories/schedule-repository-contract';
+import {describe, it, expect, beforeEach, jest} from '@jest/globals';
+import {EditEvent} from '../../../../../src/features/schedule/domain/usecases/edit-event';
+import {
+    ScheduleRepositoryContract
+} from '../../../../../src/features/schedule/domain/repositories/schedule-repository-contract';
 import {
     EventValidatorContract
 } from '../../../../../src/features/schedule/domain/services/event-validator';
-import { Event } from '../../../../../src/features/schedule/domain/entities/event';
-import { Dependency } from '../../../../../src/features/schedule/domain/entities/dependency';
+import {Event} from '../../../../../src/features/schedule/domain/entities/event';
+import {Dependency} from '../../../../../src/features/schedule/domain/entities/dependency';
 
 describe('EditEvent', () => {
     let repository: jest.Mocked<ScheduleRepositoryContract>;
@@ -21,7 +23,7 @@ describe('EditEvent', () => {
             updateEvent: jest.fn(),
             createEvent: jest.fn(),
             deleteEvent: jest.fn(),
-        } as unknown as jest.Mocked<ScheduleRepositoryContract>;
+        };
         validator = {
             hasCyclicDependency: jest.fn(),
         };
