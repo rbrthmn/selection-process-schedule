@@ -147,3 +147,7 @@ The API is versioned under the `/api/v1` prefix.
     *   **Path Parameters**:
         *   `id`: The ID of the event to delete.
     *   **Example Response**: `204 No Content`.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
