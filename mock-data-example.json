@@ -1,0 +1,413 @@
+{
+  "selection-processes": [
+    {
+      "id": "1",
+      "name": "Process Selection for the city LinkedIn",
+      "initialDate": "2026-01-01T11:00:00.000Z"
+    },
+    {
+      "id": "2",
+      "name": "Simples Process Selection",
+      "initialDate": "2026-01-01T11:00:00.000Z"
+    }
+  ],
+  "events": [
+    {
+      "id": "0",
+      "selectionProcessId": "1",
+      "name": "Publication of the call notice and annexes",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "1",
+      "selectionProcessId": "1",
+      "name": "Application period",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 13,
+      "isActive": true
+    },
+    {
+      "id": "2",
+      "selectionProcessId": "1",
+      "name": "Request for application fee exemption",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 2,
+      "isActive": true
+    },
+    {
+      "id": "3",
+      "selectionProcessId": "1",
+      "name": "Preliminary result of fee exemption requests",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "4",
+      "selectionProcessId": "1",
+      "name": "Final result of fee exemption requests",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "5",
+      "selectionProcessId": "1",
+      "name": "Deadline for payment of the application fee",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "6",
+      "selectionProcessId": "1",
+      "name": "Preliminary result of approved applications",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "7",
+      "selectionProcessId": "1",
+      "name": "Final result of approved applications",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "8",
+      "selectionProcessId": "1",
+      "name": "Announcement of the exam location",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "9",
+      "selectionProcessId": "1",
+      "name": "Objective test",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "10",
+      "selectionProcessId": "1",
+      "name": "Discursive test",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "11",
+      "selectionProcessId": "1",
+      "name": "Preliminary answer key",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "12",
+      "selectionProcessId": "1",
+      "name": "Final answer key and preliminary objective test result",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "13",
+      "selectionProcessId": "1",
+      "name": "Final result of the objective test",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "14",
+      "selectionProcessId": "1",
+      "name": "Final result of the discursive test",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "15",
+      "selectionProcessId": "1",
+      "name": "Medical evaluation for applicants with disabilities and verification of racial self-declaration",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "16",
+      "selectionProcessId": "1",
+      "name": "Final results of medical evaluations",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "17",
+      "selectionProcessId": "1",
+      "name": "Preliminary result of the selection process",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "18",
+      "selectionProcessId": "1",
+      "name": "Final result and 1st admission call",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "19",
+      "selectionProcessId": "1",
+      "name": "Enrollment for the 1st call and start of the program",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "20",
+      "selectionProcessId": "1",
+      "name": "2nd admission call",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "21",
+      "selectionProcessId": "1",
+      "name": "Enrollment for the 2nd call",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "22",
+      "selectionProcessId": "1",
+      "name": "3rd admission call",
+      "type": "milestone",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "23",
+      "selectionProcessId": "1",
+      "name": "Enrollment for the 3rd call",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "24",
+      "selectionProcessId": "2",
+      "name": "Event A",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 0,
+      "isActive": true
+    },
+    {
+      "id": "25",
+      "selectionProcessId": "2",
+      "name": "Event B",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 0,
+      "isActive": true
+    }
+  ],
+  "dependencies": [
+    {
+      "eventId": "1",
+      "previousEventId": "0",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "2",
+      "previousEventId": "1",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "3",
+      "previousEventId": "2",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "4",
+      "previousEventId": "3",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "5",
+      "previousEventId": "4",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "6",
+      "previousEventId": "5",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "7",
+      "previousEventId": "6",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "8",
+      "previousEventId": "7",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "9",
+      "previousEventId": "8",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "10",
+      "previousEventId": "9",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "11",
+      "previousEventId": "10",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "12",
+      "previousEventId": "11",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "13",
+      "previousEventId": "12",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "14",
+      "previousEventId": "13",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "15",
+      "previousEventId": "7",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "16",
+      "previousEventId": "15",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "17",
+      "previousEventId": "13",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "17",
+      "previousEventId": "14",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "17",
+      "previousEventId": "16",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "18",
+      "previousEventId": "17",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "19",
+      "previousEventId": "18",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "20",
+      "previousEventId": "19",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "21",
+      "previousEventId": "20",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "22",
+      "previousEventId": "21",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "23",
+      "previousEventId": "22",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "24",
+      "previousEventId": "25",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "25",
+      "previousEventId": "24",
+      "dislocationDays": 0
+    }
+  ]
+}
