@@ -6,6 +6,23 @@ This project serves as a comprehensive study case demonstrating the application 
 
 The core problem this project addresses is managing the schedule for a public selection process. This involves creating, retrieving, and organizing various stages or "events" (like application deadlines, exams, and interviews) for a specific selection process, ensuring they follow a logical sequence.
 
+## Architecture
+
+The project follows **Clean Architecture** principles, dividing the application into concentric layers with the Dependency Rule: inner layers know nothing about outer layers.
+
+*   **Domain Layer**: The heart of the application. It contains the business logic, entities, and interfaces (contracts). It is independent of frameworks and external agencies.
+*   **Infrastructure Layer**: Implements the interfaces defined in the Domain layer. It handles external concerns like database access (currently simulated with a local file), file systems, or third-party services.
+*   **Presentation Layer**: Responsible for handling HTTP requests and responses. It uses Controllers to invoke Use Cases from the Domain layer and return the results to the client.
+
+## Design Patterns & Algorithms
+
+This project deliberately employs several design patterns and algorithms to solve complex problems elegantly:
+
+*   **Dependency Injection (DI)**: Using **InversifyJS**, the project achieves loose coupling between classes. Dependencies are injected rather than instantiated internally, making the system easier to test and maintain.
+*   **Repository Pattern**: Access to data is abstracted behind interfaces (contracts). This allows the underlying data storage mechanism to change (e.g., from a JSON file to a SQL database) without affecting the business logic.
+*   **Chain of Responsibility (Pipeline)**: Complex processing flows are managed using a Pipeline pattern. This allows for a sequence of processing steps (middleware-like) where each step can perform an action or validation before passing control to the next.
+*   **Graph Algorithms**: The scheduling problem is modeled as a Directed Acyclic Graph (DAG). Events are nodes, and dependencies are edges. Algorithms (like topological sort or traversal) are used to calculate dates and validate the sequence of events, ensuring that prerequisites are met before dependent events can occur.
+
 ## Tech Stack
 
 This project is built with a focus on modern TypeScript development and a clean, decoupled architecture.
@@ -24,6 +41,17 @@ This project is built with a focus on modern TypeScript development and a clean,
 *   **Development Tools**:
     *   **ts-node**: To execute TypeScript files directly without pre-compilation.
     *   **dotenv** & **env-var**: For managing environment variables.
+
+## Configuration
+
+The application uses environment variables for configuration. A `.env.example` file is provided as a template.
+
+| Variable     | Description                                      | Default    |
+| :----------- | :----------------------------------------------- | :--------- |
+| `PORT`       | The port number the server will listen on.       | `3000`     |
+| `API_PREFIX` | The prefix for all API routes (e.g., `/api/v1`). | `/api/v1` |
+
+To configure the environment, create a `.env` file in the root directory and populate it with your values.
 
 ## How to Boot the Project
 
