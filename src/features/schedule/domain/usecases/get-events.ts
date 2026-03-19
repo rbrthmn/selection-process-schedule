@@ -1,6 +1,7 @@
 import {injectable, inject} from 'inversify';
 import {ScheduleRepository, ScheduleRepositoryContract} from '../repositories/schedule-repository-contract';
 import {EventValidatorContract, EventValidatorSymbol} from "../services/event-validator";
+import {ScheduleCalculatorContract, ScheduleCalculatorSymbol} from "../services/schedule-calculator";
 
 export interface GetEventsUseCaseContract {
     execute(selectionProcessId: string): object;
@@ -17,7 +18,8 @@ export const GetEventsUseCase = Symbol.for('GetEventsUseCase')
 export class GetEvents implements GetEventsUseCaseContract {
     constructor(
         @inject(ScheduleRepository) private readonly repository: ScheduleRepositoryContract,
-        @inject(EventValidatorSymbol) private readonly validator: EventValidatorContract
+        @inject(EventValidatorSymbol) private readonly validator: EventValidatorContract,
+        @inject(ScheduleCalculatorSymbol) private readonly calculator: ScheduleCalculatorContract,
     ) {
     }
 
@@ -33,6 +35,6 @@ export class GetEvents implements GetEventsUseCaseContract {
 
         return this.validator.hasCyclicDependency([], events, dependencies) ?
             {"success": false, "message": "Cyclic dependency detected"} :
-            {"success": true, "events": events};
+            {"success": true, "events": this.calculator.calculateDatas(events, dependencies)};
     }
 }
