@@ -39,7 +39,6 @@ export class GenerateAdjacencyMatrix implements Pipe {
         });
 
         payload.adjacencyMatrix = matrix;
-        console.log(matrix)
         return next(payload);
     }
 }

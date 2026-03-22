@@ -32,9 +32,10 @@ export class GetEvents implements GetEventsUseCaseContract {
     execute(selectionProcessId: string): object {
         const events = this.repository.getEvents(selectionProcessId)
         const dependencies = this.repository.getDependencies(events.map(event => event.id))
+        const initialDate = '2026-01-01'
 
         return this.validator.hasCyclicDependency([], events, dependencies) ?
             {"success": false, "message": "Cyclic dependency detected"} :
-            {"success": true, "events": this.calculator.calculateDatas(events, dependencies)};
+            {"success": true, "events": this.calculator.calculateDates(initialDate, events, dependencies)};
     }
 }

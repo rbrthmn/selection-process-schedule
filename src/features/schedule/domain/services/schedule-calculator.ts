@@ -8,7 +8,7 @@ import {InitVertexesAndEdges} from "../pipes/init-vertexes-and-edges";
 export const ScheduleCalculatorSymbol = Symbol.for('ScheduleCalculatorSymbol');
 
 export interface ScheduleCalculatorContract {
-    calculateDatas(events: Event[], dependencies: Dependency[]): Object;
+    calculateDates(initialDate: string, events: Event[], dependencies: Dependency[]): Object;
 }
 
 @injectable()
@@ -16,14 +16,15 @@ export class ScheduleValidator implements ScheduleCalculatorContract {
     constructor(@inject(Pipeline) private pipeline: Pipeline) {
     }
 
-    calculateDatas(events: Event[], dependencies: Dependency[]): Object {
+    calculateDates(initialDate: string, events: Event[], dependencies: Dependency[]): Object {
         const payload = {
+            initialDate: initialDate,
             events: events,
             dependencies: dependencies,
             matrix: [],
             weights: []
         };
-        console.log('aqui')
+
         return this.pipeline
             .through([
                 new InitVertexesAndEdges(),
