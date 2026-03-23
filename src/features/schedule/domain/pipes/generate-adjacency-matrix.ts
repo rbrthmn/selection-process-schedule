@@ -18,23 +18,27 @@ export class GenerateAdjacencyMatrix implements Pipe {
     handle(payload: any, next: (payload: any) => any): any {
         const vertexes: number[] = payload.vertexes;
         const dependencies: Dependency[] = payload.dependencies;
+        const events: any[] = payload.events;
 
         const matrix: Record<number, Record<number, number | null>> = {};
 
-        vertexes.forEach(source => {
-            matrix[source] = {};
-            vertexes.forEach(target => {
-                matrix[source][target] = null;
+        vertexes.forEach(target => {
+            matrix[target] = {};
+            vertexes.forEach(source => {
+                matrix[target][source] = null;
+
+                if (target === source) {
+                    matrix[target][source] = events.find(event => event.id == target)?.durationDays ?? null;
+                }
             });
         });
 
         dependencies.forEach(dep => {
-            const from = Number(dep.previousEventId);
-            const to = Number(dep.eventId);
-            const weight = dep.dislocationDays;
+            const source = Number(dep.previousEventId);
+            const target = Number(dep.eventId);
 
-            if (matrix[from] && matrix[from][to] !== undefined) {
-                matrix[from][to] = weight;
+            if (matrix[target] && matrix[target][source] !== undefined) {
+                matrix[target][source] = dep.dislocationDays;
             }
         });
 
