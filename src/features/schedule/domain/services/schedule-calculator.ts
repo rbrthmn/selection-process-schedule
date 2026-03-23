@@ -4,6 +4,7 @@ import {Pipeline} from '../../../../core/services/pipeline';
 import {Dependency} from "../entities/dependency";
 import {GenerateAdjacencyMatrix} from "../pipes/generate-adjacency-matrix";
 import {InitVertexesAndEdges} from "../pipes/init-vertexes-and-edges";
+import {GenerateVertexesWeights} from "../pipes/generate-vertexes-weights";
 
 export const ScheduleCalculatorSymbol = Symbol.for('ScheduleCalculatorSymbol');
 
@@ -21,14 +22,17 @@ export class ScheduleValidator implements ScheduleCalculatorContract {
             initialDate: initialDate,
             events: events,
             dependencies: dependencies,
-            matrix: [],
-            weights: []
+            vertexes: null,
+            edges: null,
+            matrix: null,
+            vertexesWeights: null
         };
 
         return this.pipeline
             .through([
                 new InitVertexesAndEdges(),
-                new GenerateAdjacencyMatrix()
+                new GenerateVertexesWeights(),
+                new GenerateAdjacencyMatrix(),
             ])
             .send(payload);
     }
