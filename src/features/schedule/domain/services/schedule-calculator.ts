@@ -5,6 +5,7 @@ import {Dependency} from "../entities/dependency";
 import {GenerateAdjacencyMatrix} from "../pipes/generate-adjacency-matrix";
 import {InitVertexesAndEdges} from "../pipes/init-vertexes-and-edges";
 import {CalculateWeights} from "../pipes/calculate-weights";
+import {AssignEventDates} from "../pipes/assign-event-dates";
 
 export const ScheduleCalculatorSymbol = Symbol.for('ScheduleCalculatorSymbol');
 
@@ -32,7 +33,8 @@ export class ScheduleCalculator implements ScheduleCalculatorContract {
             .through([
                 new InitVertexesAndEdges(),
                 new GenerateAdjacencyMatrix(),
-                new CalculateWeights()
+                new CalculateWeights(),
+                new AssignEventDates()
             ])
             .send(payload);
     }
