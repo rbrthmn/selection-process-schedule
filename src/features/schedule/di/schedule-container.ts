@@ -15,7 +15,7 @@ import {EventValidator, EventValidatorContract, EventValidatorSymbol} from "../d
 import {
   ScheduleCalculatorContract,
   ScheduleCalculatorSymbol,
-  ScheduleValidator
+  ScheduleCalculator
 } from "../domain/services/schedule-calculator";
 
 export const scheduleModule = new ContainerModule((bind) => {
@@ -32,5 +32,5 @@ export const scheduleModule = new ContainerModule((bind) => {
   bind<DeleteEventUseCaseContract>(DeleteEventUseCase).to(DeleteEvent);
 
   bind<EventValidatorContract>(EventValidatorSymbol).to(EventValidator).inSingletonScope();
-  bind<ScheduleCalculatorContract>(ScheduleCalculatorSymbol).to(ScheduleValidator).inSingletonScope();
+  bind<ScheduleCalculatorContract>(ScheduleCalculatorSymbol).to(ScheduleCalculator).inSingletonScope();
 });

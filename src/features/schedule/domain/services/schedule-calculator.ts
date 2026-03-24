@@ -13,7 +13,7 @@ export interface ScheduleCalculatorContract {
 }
 
 @injectable()
-export class ScheduleValidator implements ScheduleCalculatorContract {
+export class ScheduleCalculator implements ScheduleCalculatorContract {
     constructor(@inject(Pipeline) private pipeline: Pipeline) {
     }
 
