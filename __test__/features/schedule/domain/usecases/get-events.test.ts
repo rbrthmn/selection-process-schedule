@@ -6,10 +6,12 @@ import {
 import {EventValidatorContract} from '../../../../../src/features/schedule/domain/services/event-validator';
 import {Event} from '../../../../../src/features/schedule/domain/entities/event';
 import {Dependency} from '../../../../../src/features/schedule/domain/entities/dependency';
+import {ScheduleCalculatorContract} from "../../../../../src/features/schedule/domain/services/schedule-calculator";
 
 describe('GetEvents', () => {
     let repository: jest.Mocked<ScheduleRepositoryContract>;
     let validator: jest.Mocked<EventValidatorContract>;
+    let calculator: jest.Mocked<ScheduleCalculatorContract>;
     let getEvents: GetEvents;
 
     beforeEach(() => {
@@ -25,7 +27,10 @@ describe('GetEvents', () => {
         validator = {
             hasCyclicDependency: jest.fn(),
         };
-        getEvents = new GetEvents(repository, validator);
+        calculator = {
+            calculateDates: jest.fn(),
+        };
+        getEvents = new GetEvents(repository, validator, calculator);
     });
 
     describe('execute', () => {
