@@ -1,11 +1,17 @@
-import {describe, it, expect} from '@jest/globals';
+import {describe, it, expect, beforeEach} from '@jest/globals';
 import {AssignEventDates} from "../../../../../src/features/schedule/domain/pipes/assign-event-dates";
 import {Event} from "../../../../../src/features/schedule/domain/entities/event";
+import {next} from "../../../../utils";
 
 describe('AssignEventDates', () => {
+    let pipe: AssignEventDates;
+
+    beforeEach(() => {
+        pipe = new AssignEventDates();
+    });
+
     describe('handle', () => {
         it('with initial date and weights should assign start and end dates to events', () => {
-            const pipe = new AssignEventDates();
             const events = [
                 new Event('1', 'proc1', 'Event 1', 'type1', null, null, 10, true),
                 new Event('2', 'proc1', 'Event 2', 'type1', null, null, 20, true)
@@ -18,7 +24,6 @@ describe('AssignEventDates', () => {
                 },
                 events: events
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
@@ -29,18 +34,15 @@ describe('AssignEventDates', () => {
         });
 
         it('without initial date should throw error', () => {
-            const pipe = new AssignEventDates();
             const payload = {
                 weights: {},
                 events: []
             };
-            const next = (p: any) => p;
 
             expect(() => pipe.handle(payload, next)).toThrow("Initial date is required in the payload.");
         });
 
         it('with events without corresponding weights should not assign dates', () => {
-            const pipe = new AssignEventDates();
             const events = [
                 new Event('1', 'proc1', 'Event 1', 'type1', null, null, 10, true)
             ];
@@ -49,7 +51,6 @@ describe('AssignEventDates', () => {
                 weights: {}, 
                 events: events
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 

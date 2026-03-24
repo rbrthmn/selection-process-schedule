@@ -1,17 +1,22 @@
-import {describe, it, expect} from '@jest/globals';
+import {describe, it, expect, beforeEach} from '@jest/globals';
 import {CalculateWeights} from "../../../../../src/features/schedule/domain/pipes/calculate-weights";
+import {next} from "../../../../utils";
 
 describe('CalculateWeights', () => {
+    let pipe: CalculateWeights;
+
+    beforeEach(() => {
+        pipe = new CalculateWeights();
+    });
+
     describe('handle', () => {
         it('with adjacency matrix should calculate weights for each vertex', () => {
-            const pipe = new CalculateWeights();
             const payload = {
                 adjacencyMatrix: {
                     1: {1: 10, 2: null},
                     2: {1: 5, 2: 20}
                 }
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
@@ -22,14 +27,12 @@ describe('CalculateWeights', () => {
         });
 
         it('with disconnected adjacency matrix should calculate weights independently', () => {
-            const pipe = new CalculateWeights();
             const payload = {
                 adjacencyMatrix: {
                     1: {1: 10, 2: null},
                     2: {1: null, 2: 20}
                 }
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
@@ -40,11 +43,9 @@ describe('CalculateWeights', () => {
         });
 
         it('with empty adjacency matrix should return empty weights', () => {
-            const pipe = new CalculateWeights();
             const payload = {
                 adjacencyMatrix: {}
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 

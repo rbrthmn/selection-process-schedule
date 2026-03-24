@@ -1,11 +1,17 @@
-import {describe, it, expect} from '@jest/globals';
+import {describe, it, expect, beforeEach} from '@jest/globals';
 import {GenerateAdjacencyMatrix} from "../../../../../src/features/schedule/domain/pipes/generate-adjacency-matrix";
 import {Dependency} from "../../../../../src/features/schedule/domain/entities/dependency";
+import {next} from "../../../../utils";
 
 describe('GenerateAdjacencyMatrix', () => {
+    let pipe: GenerateAdjacencyMatrix;
+
+    beforeEach(() => {
+        pipe = new GenerateAdjacencyMatrix();
+    });
+
     describe('handle', () => {
         it('with vertexes, events and dependencies should generate adjacency matrix with weights', () => {
-            const pipe = new GenerateAdjacencyMatrix();
             const payload = {
                 vertexes: [1, 2],
                 events: [
@@ -16,7 +22,6 @@ describe('GenerateAdjacencyMatrix', () => {
                     new Dependency('2', '1', 5)
                 ],
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
@@ -27,7 +32,6 @@ describe('GenerateAdjacencyMatrix', () => {
         });
 
         it('with vertexes and events but no dependencies should generate adjacency matrix with vertex weights only', () => {
-            const pipe = new GenerateAdjacencyMatrix();
             const payload = {
                 vertexes: [1, 2],
                 events: [
@@ -36,7 +40,6 @@ describe('GenerateAdjacencyMatrix', () => {
                 ],
                 dependencies: [],
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
@@ -47,13 +50,11 @@ describe('GenerateAdjacencyMatrix', () => {
         });
 
         it('with no vertexes and no dependencies should generate empty adjacency matrix', () => {
-            const pipe = new GenerateAdjacencyMatrix();
             const payload = {
                 vertexes: [],
                 events: [],
                 dependencies: [],
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
