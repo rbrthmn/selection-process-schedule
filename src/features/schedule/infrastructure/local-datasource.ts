@@ -2,45 +2,37 @@ import {injectable} from 'inversify';
 import {ScheduleDatasourceContract} from '../domain/datasources/schedule-datasource-contract';
 import {Event} from "../domain/entities/event";
 import {Dependency} from "../domain/entities/dependency";
-import * as fs from 'fs';
-import * as path from 'path';
+import {BaseLocalDatasource} from "../../../core/infrastructure/base-local-datasource";
+
+interface ScheduleData {
+    events: Event[];
+    dependencies: Dependency[];
+}
 
 @injectable()
-export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
-    private data: { events: any[], dependencies: any[] } = {events: [], dependencies: []};
-    private readonly mockFilePath = path.join(process.cwd(), 'mock-data.json');
-    private readonly exampleFilePath = path.join(process.cwd(), 'mock-data-example.json');
-
+export class LocalScheduleDatasourceImpl extends BaseLocalDatasource<ScheduleData> implements ScheduleDatasourceContract {
     constructor() {
-        this.initializeData();
+        super('mock-data.json', 'mock-data-example.json', {events: [], dependencies: []});
     }
 
-    private initializeData() {
-        try {
-            if (!fs.existsSync(this.mockFilePath)) {
-                if (fs.existsSync(this.exampleFilePath)) {
-                    fs.copyFileSync(this.exampleFilePath, this.mockFilePath);
-                    console.log(`Created ${this.mockFilePath} from example.`);
-                } else {
-                    console.warn(`Example mock file not found at ${this.exampleFilePath}. Starting with empty data.`);
-                    return;
-                }
-            }
-
-            const fileContent = fs.readFileSync(this.mockFilePath, 'utf-8');
-            this.data = JSON.parse(fileContent);
-
-            if (!this.data.events) this.data.events = [];
-            if (!this.data.dependencies) this.data.dependencies = [];
-        } catch (error) {
-            console.error("Error initializing local datasource:", error);
-            this.data = {events: [], dependencies: []};
-        }
+    protected mapData(parsedData: any): ScheduleData {
+        const events = (parsedData.events || []).map((e: any) => new Event(
+            e.id,
+            e.selectionProcessId,
+            e.name,
+            e.type,
+            e.initialDate,
+            e.endDate,
+            e.durationDays,
+            e.isActive ?? true
+        ));
+        const dependencies = (parsedData.dependencies || []).map((d: any) => new Dependency(d.eventId, d.previousEventId, d.dislocationDays));
+        return {events, dependencies};
     }
 
     deleteDependencies(eventId: string): void {
-        this.data.dependencies = this.data.dependencies.filter((d: any) => d.eventId !== eventId)
-        this.data.dependencies = this.data.dependencies.filter((d: any) => d.previousEventId !== eventId)
+        this.data.dependencies = this.data.dependencies.filter((d: Dependency) => d.eventId !== eventId);
+        this.data.dependencies = this.data.dependencies.filter((d: Dependency) => d.previousEventId !== eventId);
     }
 
     createEvent(event: Event): Event {
@@ -60,21 +52,11 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
 
     getEvents(selectionProcessId: string): Event[] {
         return this.data.events
-            .filter((e: any) => e.selectionProcessId === selectionProcessId)
-            .map((e: any) => new Event(
-                e.id,
-                e.selectionProcessId,
-                e.name,
-                e.type,
-                e.initialDate,
-                e.endDate,
-                e.durationDays,
-                e.isActive ?? true
-            ));
+            .filter((e: Event) => e.selectionProcessId === selectionProcessId);
     }
 
     updateEvent(event: Event): Event {
-        const index = this.data.events.findIndex((e: any) => e.id === event.id);
+        const index = this.data.events.findIndex((e: Event) => e.id === event.id);
         if (index === -1) {
             throw new Error(`Event with id ${event.id} not found`);
         }
@@ -93,27 +75,26 @@ export class LocalScheduleDatasourceImpl implements ScheduleDatasourceContract {
     }
 
     deleteEvent(id: string): void {
-        const index = this.data.events.findIndex((e: any) => e.id === id);
+        const index = this.data.events.findIndex((e: Event) => e.id === id);
         if (index !== -1) {
             this.data.events.splice(index, 1);
-            this.deleteDependencies(id)
+            this.deleteDependencies(id);
         }
     }
 
     createDependency(dependency: Dependency): Dependency {
-        return new Dependency(
+        // Assuming dependencies are added to this.data.dependencies
+        const newDependency = new Dependency(
             dependency.eventId,
             dependency.previousEventId,
             dependency.dislocationDays
         );
+        this.data.dependencies.push(newDependency);
+        return newDependency;
     }
 
     getDependencies(eventsIds: string[]): Dependency[] {
         return this.data.dependencies
-            .map((d: any) => {
-                return new Dependency(d.eventId, d.previousEventId, d.dislocationDays);
-            })
-            .filter((d: Dependency | null) => d !== null)
-            .filter((d: Dependency) => eventsIds.includes(d.eventId) || eventsIds.includes(d.previousEventId)) as Dependency[];
+            .filter((d: Dependency) => eventsIds.includes(d.eventId) || eventsIds.includes(d.previousEventId));
     }
 }

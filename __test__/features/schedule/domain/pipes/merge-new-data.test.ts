@@ -1,10 +1,16 @@
 import { MergeNewData } from '../../../../../src/features/schedule/domain/pipes/merge-new-data';
-import {describe, it, expect} from '@jest/globals';
+import {describe, it, expect, beforeEach} from '@jest/globals';
+import {next} from "../../../../utils";
 
 describe('MergeNewData', () => {
+    let pipe: MergeNewData;
+
+    beforeEach(() => {
+        pipe = new MergeNewData();
+    });
+
     describe('handle', () => {
         it('with new dependencies should replace existing dependencies for the given event', () => {
-            const pipe = new MergeNewData();
             const payload = {
                 edges: [
                     [1, 2], 
@@ -17,7 +23,6 @@ describe('MergeNewData', () => {
                     },
                 },
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
@@ -30,7 +35,6 @@ describe('MergeNewData', () => {
         });
 
         it('with an empty dependencies array should remove all dependencies for the given event', () => {
-            const pipe = new MergeNewData();
             const payload = {
                 edges: [
                     [1, 2],
@@ -43,7 +47,6 @@ describe('MergeNewData', () => {
                     },
                 },
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
@@ -51,7 +54,6 @@ describe('MergeNewData', () => {
         });
 
         it('with no newData should not modify the edges', () => {
-            const pipe = new MergeNewData();
             const payload = {
                 edges: [
                     [1, 2],
@@ -59,7 +61,6 @@ describe('MergeNewData', () => {
                 ],
                 newData: {},
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
@@ -70,7 +71,6 @@ describe('MergeNewData', () => {
         });
 
         it('with newData but no dependencies array should not modify the edges', () => {
-            const pipe = new MergeNewData();
             const payload = {
                 edges: [
                     [1, 2],
@@ -82,7 +82,6 @@ describe('MergeNewData', () => {
                     },
                 },
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
