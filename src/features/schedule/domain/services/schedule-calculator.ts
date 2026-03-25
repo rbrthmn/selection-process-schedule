@@ -10,7 +10,7 @@ import {AssignEventDates} from "../pipes/assign-event-dates";
 export const ScheduleCalculatorSymbol = Symbol.for('ScheduleCalculatorSymbol');
 
 export interface ScheduleCalculatorContract {
-    calculateDates(initialDate: string, events: Event[], dependencies: Dependency[]): Object;
+    calculateDates(initialDate: string | null, events: Event[], dependencies: Dependency[]): Object;
 }
 
 @injectable()
