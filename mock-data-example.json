@@ -7,8 +7,28 @@
     },
     {
       "id": "2",
-      "name": "Simples Process Selection",
+      "name": "Cyclic Process Selection",
       "initialDate": "2026-01-01T11:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "name": "Linear Chain Process",
+      "initialDate": "2026-03-01T00:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "name": "Complex DAG Process",
+      "initialDate": "2026-04-01T00:00:00.000Z"
+    },
+    {
+      "id": "5",
+      "name": "Disconnected Process",
+      "initialDate": "2026-05-01T00:00:00.000Z"
+    },
+    {
+      "id": "6",
+      "name": "Large Cycle Process",
+      "initialDate": "2026-06-01T00:00:00.000Z"
     }
   ],
   "events": [
@@ -259,7 +279,7 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 0,
+      "durationDays": 5,
       "isActive": true
     },
     {
@@ -269,7 +289,127 @@
       "type": "task",
       "initialDate": null,
       "endDate": null,
-      "durationDays": 0,
+      "durationDays": 5,
+      "isActive": true
+    },
+    {
+      "id": "30",
+      "selectionProcessId": "3",
+      "name": "Step 1",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 2,
+      "isActive": true
+    },
+    {
+      "id": "31",
+      "selectionProcessId": "3",
+      "name": "Step 2",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 3,
+      "isActive": true
+    },
+    {
+      "id": "32",
+      "selectionProcessId": "3",
+      "name": "Step 3",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "40",
+      "selectionProcessId": "4",
+      "name": "Project Start",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 10,
+      "isActive": true
+    },
+    {
+      "id": "41",
+      "selectionProcessId": "4",
+      "name": "Parallel Task A",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 5,
+      "isActive": true
+    },
+    {
+      "id": "42",
+      "selectionProcessId": "4",
+      "name": "Parallel Task B",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 5,
+      "isActive": true
+    },
+    {
+      "id": "43",
+      "selectionProcessId": "4",
+      "name": "Final Review",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 10,
+      "isActive": true
+    },
+    {
+      "id": "50",
+      "selectionProcessId": "5",
+      "name": "Independent Task 1",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 5,
+      "isActive": true
+    },
+    {
+      "id": "51",
+      "selectionProcessId": "5",
+      "name": "Independent Task 2",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 5,
+      "isActive": true
+    },
+    {
+      "id": "60",
+      "selectionProcessId": "6",
+      "name": "Cycle Part 1",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "61",
+      "selectionProcessId": "6",
+      "name": "Cycle Part 2",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
+      "isActive": true
+    },
+    {
+      "id": "62",
+      "selectionProcessId": "6",
+      "name": "Cycle Part 3",
+      "type": "task",
+      "initialDate": null,
+      "endDate": null,
+      "durationDays": 1,
       "isActive": true
     }
   ],
@@ -407,6 +547,51 @@
     {
       "eventId": "25",
       "previousEventId": "24",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "31",
+      "previousEventId": "30",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "32",
+      "previousEventId": "31",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "41",
+      "previousEventId": "40",
+      "dislocationDays": 2
+    },
+    {
+      "eventId": "42",
+      "previousEventId": "40",
+      "dislocationDays": 5
+    },
+    {
+      "eventId": "43",
+      "previousEventId": "41",
+      "dislocationDays": 2
+    },
+    {
+      "eventId": "43",
+      "previousEventId": "42",
+      "dislocationDays": 10
+    },
+    {
+      "eventId": "61",
+      "previousEventId": "60",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "62",
+      "previousEventId": "61",
+      "dislocationDays": 0
+    },
+    {
+      "eventId": "60",
+      "previousEventId": "62",
       "dislocationDays": 0
     }
   ]
