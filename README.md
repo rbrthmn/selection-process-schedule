@@ -20,7 +20,7 @@ This project deliberately employs several design patterns and algorithms to solv
 
 *   **Dependency Injection (DI)**: Using **InversifyJS**, the project achieves loose coupling between classes. Dependencies are injected rather than instantiated internally, making the system easier to test and maintain.
 *   **Repository Pattern**: Access to data is abstracted behind interfaces (contracts). This allows the underlying data storage mechanism to change (e.g., from a JSON file to a SQL database) without affecting the business logic.
-*   **Chain of Responsibility (Pipeline)**: Complex processing flows are managed using a Pipeline pattern. This allows for a sequence of processing steps (middleware-like) where each step can perform an action or validation before passing control to the next.
+*   **Chain of Responsibility (Pipeline)**: Complex processing flows are managed using a Pipeline pattern. This allows for a sequence of processing steps (middleware-like) where each step can perform an action or validation before passing control to the next. In this project, it's used to calculate event dates through a series of steps: initializing vertexes, generating an adjacency matrix, calculating weights, and assigning dates.
 *   **Graph Algorithms**: The scheduling problem is modeled as a Directed Acyclic Graph (DAG). Events are nodes, and dependencies are edges. Algorithms (like topological sort or traversal) are used to calculate dates and validate the sequence of events, ensuring that prerequisites are met before dependent events can occur.
 
 ## Tech Stack
@@ -34,7 +34,7 @@ This project is built with a focus on modern TypeScript development and a clean,
     *   **Express.js**: A minimal and flexible Node.js web application framework.
     *   **InversifyJS**: A powerful and lightweight inversion of control (IoC) container for TypeScript, used here with `inversify-express-utils` to manage dependency injection and routing.
 *   **Data & Validation**:
-    *   **Local JSON File**: For data persistence, using a `mock-data.json` file. This is managed by the `LocalScheduleDatasourceImpl`.
+    *   **Local JSON File**: For data persistence, using a `mock-data.json` file.
     *   **Zod**: For schema declaration and validation, ensuring type-safe data handling from requests.
 *   **Testing**:
     *   **Jest** & **ts-jest**: For unit and integration testing of the application layers.
@@ -107,7 +107,7 @@ The API is versioned under the `/api/v1` prefix.
     *   **Description**: Retrieves all events for a given selection process.
     *   **Query Parameters**:
         *   `selectionProcessId` (required): The ID of the selection process.
-    *   **Example Response**: `200 OK` with an array of event objects.
+    *   **Example Response**: `200 OK` with an array of event objects. Dates are automatically calculated based on the selection process's initial date and event dependencies.
         ```json
         [
             {
@@ -115,8 +115,8 @@ The API is versioned under the `/api/v1` prefix.
                 "selectionProcessId": "process-abc",
                 "name": "Application Period",
                 "type": "submission",
-                "initialDate": null,
-                "endDate": null,
+                "initialDate": "2023-10-01",
+                "endDate": "2023-10-11",
                 "durationDays": 10,
                 "isActive": true
             }
