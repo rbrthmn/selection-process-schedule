@@ -1,6 +1,11 @@
 import {injectable, inject} from 'inversify';
 import {ScheduleRepository, ScheduleRepositoryContract} from '../repositories/schedule-repository-contract';
 import {EventValidatorContract, EventValidatorSymbol} from "../services/event-validator";
+import {ScheduleCalculatorContract, ScheduleCalculatorSymbol} from "../services/schedule-calculator";
+import {
+    SelectionProcessRepository,
+    SelectionProcessRepositoryContract
+} from "../../../general-informations/domain/repositories/selection-process-repository-contract";
 
 export interface GetEventsUseCaseContract {
     execute(selectionProcessId: string): object;
@@ -17,7 +22,9 @@ export const GetEventsUseCase = Symbol.for('GetEventsUseCase')
 export class GetEvents implements GetEventsUseCaseContract {
     constructor(
         @inject(ScheduleRepository) private readonly repository: ScheduleRepositoryContract,
-        @inject(EventValidatorSymbol) private readonly validator: EventValidatorContract
+        @inject(EventValidatorSymbol) private readonly validator: EventValidatorContract,
+        @inject(ScheduleCalculatorSymbol) private readonly calculator: ScheduleCalculatorContract,
+        @inject(SelectionProcessRepository) private readonly selectionProcessRepository: SelectionProcessRepositoryContract
     ) {
     }
 
@@ -30,9 +37,10 @@ export class GetEvents implements GetEventsUseCaseContract {
     execute(selectionProcessId: string): object {
         const events = this.repository.getEvents(selectionProcessId)
         const dependencies = this.repository.getDependencies(events.map(event => event.id))
+        const initialDate = this.selectionProcessRepository.getSelectionProcess(selectionProcessId)?.initialDate ?? null;
 
         return this.validator.hasCyclicDependency([], events, dependencies) ?
             {"success": false, "message": "Cyclic dependency detected"} :
-            {"success": true, "events": events};
+            {"success": true, "events": this.calculator.calculateDates(initialDate, events, dependencies)};
     }
 }

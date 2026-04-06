@@ -1,10 +1,16 @@
 import { GenerateGraph } from '../../../../../src/features/schedule/domain/pipes/generate-graph';
-import {describe, it, expect} from '@jest/globals';
+import {describe, it, expect, beforeEach} from '@jest/globals';
+import {next} from "../../../../utils";
 
 describe('GenerateGraph', () => {
+    let pipe: GenerateGraph;
+
+    beforeEach(() => {
+        pipe = new GenerateGraph();
+    });
+
     describe('handle', () => {
         it('with vertexes and edges should generate a graph adjacency list', () => {
-            const pipe = new GenerateGraph();
             const payload = {
                 vertexes: [1, 2, 3],
                 edges: [
@@ -12,7 +18,6 @@ describe('GenerateGraph', () => {
                     [2, 3],
                 ],
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
@@ -24,12 +29,10 @@ describe('GenerateGraph', () => {
         });
 
         it('with isolated vertexes should generate a graph with empty adjacency lists', () => {
-            const pipe = new GenerateGraph();
             const payload = {
                 vertexes: [1, 2, 3],
                 edges: [],
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
@@ -41,7 +44,6 @@ describe('GenerateGraph', () => {
         });
 
         it('with multiple edges from the same vertex should generate a correct adjacency list', () => {
-            const pipe = new GenerateGraph();
             const payload = {
                 vertexes: [1, 2, 3],
                 edges: [
@@ -49,7 +51,6 @@ describe('GenerateGraph', () => {
                     [1, 3],
                 ],
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
@@ -61,7 +62,6 @@ describe('GenerateGraph', () => {
         });
 
         it('with edges referencing non-existent vertexes should handle gracefully', () => {
-            const pipe = new GenerateGraph();
             const payload = {
                 vertexes: [1],
                 edges: [
@@ -69,7 +69,6 @@ describe('GenerateGraph', () => {
                     [2, 3], 
                 ],
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
@@ -79,12 +78,10 @@ describe('GenerateGraph', () => {
         });
 
         it('with empty vertexes and edges should generate an empty graph', () => {
-            const pipe = new GenerateGraph();
             const payload = {
                 vertexes: [],
                 edges: [],
             };
-            const next = (p: any) => p;
 
             const result = pipe.handle(payload, next);
 
